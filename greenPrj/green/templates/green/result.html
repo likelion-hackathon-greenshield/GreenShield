@@ -1,11 +1,27 @@
 <body>
-    <h1>결과</h1>
-    <p>총점: {{ total_score }}</p>
+    <h2>Green Shield</h2>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <br />
+    <hr />
+    <br />
+    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+    <a href="{% url 'green:community' %}">커뮤니티</a>
+    <a href="{% url 'green:market' %}">상품 추천</a>
+    <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
+    <br />
+    <br />
+    <hr />
+    <h1>분석 결과</h1>
+    <p>닉네임 {{ user.username }}</p>
+    <p>나의 점수: {{ total_score }}점</p>
     <hr>
-    <h1>해야 할 일</h1>
+    <h1>해야 할 일 리스트</h1>
     <ul>
         {% for to_do in to_do_list %}
             <li>{{ to_do }}</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'green:list' %}">할 일 체크하러 가기</a>
 </body>
