@@ -1,0 +1,8 @@
+<body>
+    <h1>환경 호르몬 노출 평가</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- 뎁툴 확인 필요 -->
+        <button type="submit">제출</button>
+    </form>
+</body>
