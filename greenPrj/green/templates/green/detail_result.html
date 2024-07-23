@@ -13,20 +13,16 @@
     <br />
     <br />
     <hr />
-    <h1>분석 결과</h1>
-    <p>닉네임 {{ user.username }}</p>
-    <p>나의 점수: {{ total_score }}점</p>
-    <hr>
-    <h1>해야 할 일 리스트</h1>
-    <ul>
-        {% for question in to_do_list %}
-            <li>{{ question.to_do }}</li>
+    <h1>지난 3회 평가 분석</h1>
+        {% for third_answer in third_answers %}
+            {{ third_answer.score }}<br>
         {% endfor %}
-    </ul>
-    <h1>지난 평가 분석</h1>
+        <hr>
         {% for second_answer in second_answers %}
             {{ second_answer.score }}<br>
         {% endfor %}
-    <a href="{% url 'green:detail-result' %}">Details</a>
-    <a href="{% url 'green:list' %}">할 일 체크하러 가기</a>
+        <hr>
+        {% for latest_answer in latest_answers %}
+            {{ latest_answer.score }}<br>
+        {% endfor %}
 </body>

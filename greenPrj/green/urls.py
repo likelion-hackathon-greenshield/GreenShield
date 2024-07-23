@@ -12,4 +12,5 @@ urlpatterns = [
     path('market/', views.market, name='market'),
     path('test/', views.test_view, name='test'),
     path('result/', views.result_view, name='result'),
+    path('detail-result/', views.detail_result_view, name="detail-result"),
 ]
