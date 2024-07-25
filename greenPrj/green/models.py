@@ -5,6 +5,7 @@ class Question(models.Model):
     order = models.PositiveIntegerField() # 설문 문항 순서 (필요하다면)
     question = models.CharField(max_length=100, null=True) # 설문 문항
     to_do = models.CharField(max_length=100, null=True) # 해야 할 일
+    tip = models.CharField(max_length=100, null=True) # 팁
 
     def __str__(self):
         return f'{self.question}'
