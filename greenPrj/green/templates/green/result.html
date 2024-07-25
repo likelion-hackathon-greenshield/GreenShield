@@ -19,10 +19,15 @@
     <hr>
     <h1>해야 할 일 리스트</h1>
     <ul>
-        {% for question in to_do_list %}
-            <li>{{ question.to_do }}</li>
+        {% for answer in answer_list %}
+            <li>{{ answer.to_do }}</li>
         {% endfor %}
     </ul>
+    <h1>팁 리스트</h1>
+    <ul>
+        {% for answer in answer_list %}
+            <li>{{ answer.tip }}</li>
+        {% endfor %}
     <h1>지난 평가 분석</h1>
         {% for second_answer in second_answers %}
             {{ second_answer.score }}<br>

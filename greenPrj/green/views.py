@@ -67,7 +67,7 @@ def result_view(request):
     latest_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[:10]
     answers = sorted(latest_answers, key=lambda x: x.score)[:5]
 
-    to_do_list = [ answer.question for answer in answers ]
+    answer_list = [ answer.question for answer in answers ]
 
     second_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[10:20]
     third_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[20:30]
@@ -75,7 +75,7 @@ def result_view(request):
     context = {
         'scores': scores,
         'total_score': total_score,
-        'to_do_list' : to_do_list,
+        'answer_list' : answer_list,
         'second_answers': second_answers,
         'third_answers': third_answers,
     }
