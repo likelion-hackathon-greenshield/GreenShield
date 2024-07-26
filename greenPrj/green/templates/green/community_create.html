@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'logout' %}">로그아웃</a>
+    <hr />
+    <h2>게시물 작성</h2>
+    <form
+      method="post"
+      action="{% url 'green:community_create' %}"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">등록</button>
+    </form>
+  </body>
+</html>

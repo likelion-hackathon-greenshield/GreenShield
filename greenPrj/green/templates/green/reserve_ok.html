@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>전문가 상담 예약하기</h2>
+    <p>예약 확인 버튼을 누르는 순간 즉시 예약이 진행됩니다.</p>
+    <form method="post" action="{% url 'green:reserve_complete' expert.id %}">
+      {% csrf_token %}
+      <button type="submit">예약 완료</button>
+      <a href="{% url 'green:expert' %}">취소</a>
+    </form>
+  </body>
+</html>

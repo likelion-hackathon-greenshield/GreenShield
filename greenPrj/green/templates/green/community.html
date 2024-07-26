@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <h2>Green Shield</h2>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <hr />
+    <br />
+    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+    <a href="{% url 'green:community' %}">커뮤니티</a>
+    <a href="{% url 'green:market' %}">추천 상품</a>
+    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
+    <hr />
+    <h2>커뮤니티</h2>
+    <form method="get">
+        <label for="category">카테고리 선택:</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+            <option value="health" {% if request.GET.category == "health" %}selected{% endif %}>건강 게시판</option>
+            <option value="free" {% if request.GET.category == "free" %}selected{% endif %}>자유 게시판</option>
+        </select>
+    </form>
+    <br>
+    <a href="{% url 'green:community_create' %}">게시물 작성</a>
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                {% if not request.GET.category or request.GET.category == post.category %}
+                    <li>
+                        <a href="{% url 'green:community_detail' post.id %}">
+                            <p>{{ post.author.username }}</p>
+                            <p>{{ post.created_at }}</p>
+                            <p>{{ post.content }}</p>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" width="300">
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <hr />
+    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+</body>
+</html>

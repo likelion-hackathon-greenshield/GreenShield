@@ -1,0 +1,27 @@
+<body>
+    <h2>Green Shield</h2>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <br />
+    <hr />
+    <br />
+    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+    <a href="{% url 'green:community' %}">커뮤니티</a>
+    <a href="{% url 'green:market' %}">상품 추천</a>
+    <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
+    <br />
+    <br />
+    <hr />
+    <h1>설문 재확인 페이지</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for item in result %}
+            <p>{{ item.question }}</p>
+            <p>{{ item.score }}</p>
+            <p>팁: {{ item.tip }}</p>
+            <hr/>
+        {% endfor %}
+    </form>
+</body>
