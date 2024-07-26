@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Green Shield</h2>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    <hr />
+    <br />
+    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+    <a href="{% url 'green:community' %}">커뮤니티</a>
+    <a href="{% url 'green:market' %}">추천 상품</a>
+    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
+    <hr />
+    <p>
+      <a href="{% url 'green:external_redirect_puliodays' %}"
+        >풀리오 종아리 마사지기</a
+      >
+    </p>
+    <p>
+      <a href="{% url 'green:external_redirect_costco' %}"
+        >코스트코 Red Seal 치약</a
+      >
+    </p>
+    <hr />
+    <h3>추천 상품</h3>
+    <form method="get">
+        <label for="category">카테고리 선택:</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <ol>
+        {% for product in products %}
+            <li>
+                <a href="{{ product.url }}" target="_blank">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100">
+                <p>{{ product.company }}</p>
+                <p>{{ product.name }}</p>
+                <p>{{ product.price }}원</p>
+                {% if product.url %}
+                {% endif %}
+            </a>
+            </li>
+        {% endfor %}
+    </ol>
+    <br>
+    <br>
+    <hr>
+    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+  </body>
+</html>

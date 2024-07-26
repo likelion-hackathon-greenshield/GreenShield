@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'logout' %}">로그아웃</a>
+    <hr />
+    <h2>마이페이지</h2>
+    <p>본명: {{ full_name }}</p>
+    <p>아이디: {{ username }}</p>
+    <p>이메일: {{ email }}</p>
+    <p>가입일: {{ date_joined }}</p>
+    <p>마지막 로그인: {{ last_login }}</p>
+    <hr />
+    <a href="{% url 'green:liked_posts' %}">내가 좋아요한 글</a>
+    <a href="{% url 'green:authored_posts' %}">내가 작성한 글</a>
+    <a href="{% url 'green:reservation_list' %}">나의 예약 내역</a>
+    <hr />
+    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+  </body>
+</html>

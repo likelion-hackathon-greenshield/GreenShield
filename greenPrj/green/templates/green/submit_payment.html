@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>송금 확인 코드 제출</h2>
+    <p>전송된 입출금 문자 메시지에 적힌 코드 6자리를 입력해주세요.</p>
+    <form action="{% url 'green:submit_payment' %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="payment_id" value="123456" />
+      <!--가상결제코드 : 123456-->
+      <label for="payment_code">가상 결제 코드:</label>
+      <input type="text" id="payment_code" name="payment_code" required />
+      <button type="submit">제출</button>
+    </form>
+    <a href="{% url 'green:premium_info' %}">취소</a>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'logout' %}">로그아웃</a>
+    <hr />
+    <h2>{{ post.author.username }}</h2>
+    <p>{{ post.created_at }}</p>
+    <p>{{ post.content }}</p>
+    <p>{% if post.image %}</p>
+    <img src="{{ post.image.url }}" alt="{{ post.category }}" width="500" />
+    {% endif %} {% if post.video %}
+    <video width="500" controls>
+      <source src="{{ post.video.url }}" type="video/mp4" />
+    </video>
+    {% endif %}
+    <br />
+    <br />
+    {% if user.is_authenticated %} {% if user == post.author %}
+    <a href="{% url 'green:community_update' post.id %}">수정하기</a>
+    <a href="{% url 'green:community_delete' post.id %}">삭제하기</a>
+    {% endif %}
+    <p>좋아요: <span id="like-count">{{ post.get_likes_count }}</span></p>
+    {% if user in post.likes.all %}
+    <form action="{% url 'green:like_post' post.id %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">좋아요 취소</button>
+    </form>
+    {% else %}
+    <form action="{% url 'green:like_post' post.id %}" method="POST">
+      {% csrf_token %}
+      <button type="submit">좋아요</button>
+    </form>
+    {% endif %} {% endif %}
+    <br />
+    <hr />
+    <form method="POST">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">댓글 등록</button>
+    </form>
+    {% if comments %}
+    <ul>
+      {% for comment in comments %}
+      <li>
+        <p>{{ comment.author.username }}</p>
+        <p>{{ comment.created_at }}</p>
+        <p>{{ comment.content }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>댓글이 없습니다.</p>
+    {% endif %}
+    <br />
+    <hr />
+    <a href="{% url 'green:community' %}">게시물 목록으로 돌아가기</a>
+  </body>
+</html>

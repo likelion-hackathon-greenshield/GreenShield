@@ -10,7 +10,6 @@
     {{ user.username }}
     <a href="{% url 'green:mypage' %}">마이페이지</a>
     <a href="{% url 'accounts:logout' %}">로그아웃</a>
-    <br />
     <hr />
     <br />
     <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
@@ -18,23 +17,24 @@
     <a href="{% url 'green:community' %}">커뮤니티</a>
     <a href="{% url 'green:market' %}">추천 상품</a>
     <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
-    <br />
-    <br />
-    <a href="{% url 'green:test' %}">테스트 하러 가기</a>
-    <br />
-    <br />
     <hr />
-    <h2>오늘의 추천 상품</h2>
-    <br />
-    <br />
+    <h2>전문가 리스트</h2>
+    <ol>
+      {% for expert in experts %}
+      <li>
+        <img src="{{ expert.photo.url }}" alt="{{ expert.name }}" width="150" />
+        <p>{{ expert.name }}</p>
+        <p>{{ expert.location }}</p>
+        <p>{{ expert.description }}</p>
+        <p>
+          <a href="{% url 'green:reserve' expert.id %}">
+            <button>예약하기</button>
+          </a>
+        </p>
+      </li>
+      {% endfor %}
+    </ol>
     <hr />
-    <h2>오늘의 환경 호르몬 정보</h2>
-    <br />
-    <br />
-    <hr />
-    <h2>쇼핑몰 바로 가기</h2>
-    <a href="{% url 'green:external_redirect_ptech' %}">피테크</a>
-    <a href="{% url 'green:external_redirect_heymoon' %}">헤이문</a>
-    <a href="{% url 'green:external_redirect_jiguhara' %}">지구하라</a>
+    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
   </body>
 </html>
