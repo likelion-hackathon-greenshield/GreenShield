@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .forms import TestForm, PostForm, CommentForm
-from .models import Question, Answer, CheckList, Category, Product, Post, Comment, Expert, Reservation, UserProfile, Payment
-from django.db.models import Count
+from .models import Category, Product, Post, Comment, Expert, Reservation, UserProfile, Payment, Question, Answer, CheckList
+from .forms import PostForm, CommentForm, TestForm
 from django.utils import timezone
-from datetime import timedelta
+from datetime import date, datetime, timedelta
+from django.db.models import Count
+
+# Create your views here.
 
 @login_required
 def main_view(request):
@@ -27,6 +29,15 @@ def mypage(request):
     }
     
     return render(request, 'green/mypage.html', context)
+
+def test(request):
+    return render(request, 'green/test.html')
+
+def list(request):
+    return render(request, 'green/list.html')
+
+def expert(request):
+    return render(request, 'green/expert.html')
 
 def market(request):
     categories = Category.objects.all()
@@ -377,25 +388,25 @@ def list_view(request):
                     date=timezone.now().date(),
                     complete=True
                 )
-        return redirect('green:to_do_list')
+        return redirect('green:list')
 
     check_list = CheckList.objects.filter(user=request.user, date=timezone.now().date())
     completed_list = {list.question.id: list.complete for list in check_list}
 
     # 일주일 리포트
     today = timezone.now().date()
-    sunday = today - timedelta(days=today.weekday())
+    sunday = today - timedelta(days=today.weekday()+1) 
     saturday = sunday + timedelta(days=6)
 
     weekly_completion = CheckList.objects.filter(
         user=request.user,
-        date__range = [sunday, saturday]
+        date__range=[sunday, saturday]
     ).values('date').annotate(completed_count=Count('id')).order_by('date')
 
     week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     completion_by_day = {day: 0 for day in week}
     for record in weekly_completion:
-        day_of_week = (record['date'] - sunday).days  # 0(일요일) ~ 6(토요일)
+        day_of_week = (record['date'] - sunday).days  # 0(월요일) ~ 6(일요일)
         completion_by_day[week[day_of_week]] = record['completed_count']
 
     # 올해 리포트

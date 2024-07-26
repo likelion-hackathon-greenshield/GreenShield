@@ -1,28 +1,28 @@
 <body>
-    <h2>Green Shield</h2>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'accounts:logout' %}">로그아웃</a>
-    <br />
-    <hr />
-    <br />
-    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-    <a href="{% url 'green:community' %}">커뮤니티</a>
-    <a href="{% url 'green:market' %}">상품 추천</a>
-    <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-    <br />
-    <br />
-    <hr />
-    <h1>해야 할 일 리스트</h1>
-    <ul>
-        {% for to_do in to_do_list %}
-            <li>{{ to_do }}</li>
-        {% endfor %}
-    </ul>
-    <h1>평가 분석</h1>
-        {% for answer in answers %}
-            {{ answer.score }}<br>
-        {% endfor %}
-    <a href="{% url 'green:detail-analysis' %}">Details</a>
+  <h2>Green Shield</h2>
+  {{ user.username }}
+  <a href="{% url 'green:mypage' %}">마이페이지</a>
+  <a href="{% url 'logout' %}">로그아웃</a>
+  <br />
+  <hr />
+  <br />
+  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+  <a href="{% url 'green:community' %}">커뮤니티</a>
+  <a href="{% url 'green:market' %}">상품 추천</a>
+  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
+  <br />
+  <br />
+  <hr />
+  <h1>해야 할 일 리스트</h1>
+  <ul>
+      {% for to_do in to_do_list %}
+          <li>{{ to_do }}</li>
+      {% endfor %}
+  </ul>
+  <h1>평가 분석</h1>
+      {% for answer in answers %}
+          {{ answer.score }}<br>
+      {% endfor %}
+  <a href="{% url 'green:detail-analysis' %}">Details</a>
 </body>
