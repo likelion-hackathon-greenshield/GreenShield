@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>정말로 유료 회원 가입을 진행하시겠습니까?</h2>
+    <p>유료회원 가입을 원하시면 아래의 가상 계좌로 50,000원을 송금해주세요.</p>
+    <p>가상 계좌: 123-456-7890</p>
+    <p>은행명: 1234은행</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">확인</button>
+      <a href="{% url 'green:main' %}">취소</a>
+    </form>
+  </body>
+</html>

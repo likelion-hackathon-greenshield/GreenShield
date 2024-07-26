@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Green Shield</h2>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'logout' %}">로그아웃</a>
+    <hr />
+    <br />
+    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+    <a href="{% url 'green:community' %}">커뮤니티</a>
+    <a href="{% url 'green:market' %}">추천 상품</a>
+    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
+    <hr />
+    <h2>전문가 리스트</h2>
+    <ol>
+      {% for expert in experts %}
+      <li>
+        <img src="{{ expert.photo.url }}" alt="{{ expert.name }}" width="150" />
+        <p>{{ expert.name }}</p>
+        <p>{{ expert.location }}</p>
+        <p>{{ expert.description }}</p>
+        <p>
+          <a href="{% url 'green:reserve' expert.id %}">
+            <button>예약하기</button>
+          </a>
+        </p>
+      </li>
+      {% endfor %}
+    </ol>
+    <hr />
+    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{ user.username }}
+    <a href="{% url 'green:mypage' %}">마이페이지</a>
+    <a href="{% url 'logout' %}">로그아웃</a>
+    <hr />
+    <h2>나의 예약 내역</h2>
+    <ul>
+      {% for reservation in reservations %}
+      <li>
+        <p>예약날짜: {{ reservation.date }} {{ reservation.time }}</p>
+        <p>전문가 : {{ reservation.expert.name }}</p>
+      </li>
+      {% empty %}
+      <p>예약 내역이 없습니다.</p>
+      {% endfor %}
+    </ul>
+    <hr />
+    <a href="{% url 'green:mypage' %}">마이페이지로 돌아가기</a>
+  </body>
+</html>

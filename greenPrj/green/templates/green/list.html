@@ -1,67 +1,68 @@
 <body>
-    <h2>Green Shield</h2>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <br />
-    <hr />
-    <br />
-    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-    <a href="{% url 'green:community' %}">커뮤니티</a>
-    <a href="{% url 'green:market' %}">상품 추천</a>
-    <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-    <br />
-    <br />
-    <hr />
-    <h1>해야 할 일</h1>
-    {% load custom_filters %}
-    <form method='POST'>
-        {% csrf_token %}
-        <ul>
-            {% for question in to_do_list %}
-                <li>
-                    <input type="checkbox" name="to_do_{{ question.id }}" value="1" {% if completed_list|get_item:question.id %} checked {% endif %}>
-                    {{ question.to_do }}
-                </li>
-            {% endfor %}
-        </ul>
-        <button type="submit">저장</button>
-    </form>
-    <h2>Weekly Overview</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Completion</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for day, count in completion_by_day.items %}
-                <tr>
-                    <td>{{ day }}</td>
-                    <td>{{ count }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <h2>Monthly Overview</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Month</th>
-                <th>Completion</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for month, count in completion_by_month.items %}
-                <tr>
-                    <td>{{ month }}</td>
-                    <td>{{ count }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <h1>상품 구경하러 가기</h1>
-    <p><a href="https://www.heymoon.net">헤이문쇼핑</a></p>
-    <p><a href="https://jiguhara.com/">지구하라</a></p>
+  <h2>Green Shield</h2>
+  {{ user.username }}
+  <a href="{% url 'green:mypage' %}">마이페이지</a>
+  <a href="{% url 'logout' %}">로그아웃</a>
+  <br />
+  <hr />
+  <br />
+  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
+  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+  <a href="{% url 'green:community' %}">커뮤니티</a>
+  <a href="{% url 'green:market' %}">상품 추천</a>
+  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
+  <br />
+  <br />
+  <hr />
+  <h1>해야 할 일</h1>
+  {% load custom_filters %}
+  <form method='POST'>
+      {% csrf_token %}
+      <ul>
+          {% for question in to_do_list %}
+              <li>
+                  <input type="checkbox" name="to_do_{{ question.id }}" value="1" {% if completed_list|get_item:question.id %} checked {% endif %}>
+                  {{ question.to_do }}
+              </li>
+          {% endfor %}
+      </ul>
+      <button type="submit">저장</button>
+  </form>
+  <h2>Weekly Overview</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Day</th>
+              <th>Completion</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for day, count in completion_by_day.items %}
+              <tr>
+                  <td>{{ day }}</td>
+                  <td>{{ count }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  <h2>Monthly Overview</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Month</th>
+              <th>Completion</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for month, count in completion_by_month.items %}
+              <tr>
+                  <td>{{ month }}</td>
+                  <td>{{ count }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  <h1>상품 구경하러 가기</h1>
+  <p><a href="https://www.heymoon.net">헤이문쇼핑</a></p>
+  <p><a href="https://jiguhara.com/">지구하라</a></p>
 </body>
