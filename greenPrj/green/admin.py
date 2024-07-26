@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Question, Answer, CheckList, Category, Product, Post, Comment, Expert
+from .models import Category, Product, Post, Comment, Expert, Question, Answer, CheckList
+
+# Register your models here.
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('author', 'post', 'content', 'created_at')
