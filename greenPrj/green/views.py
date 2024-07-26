@@ -4,7 +4,7 @@ from django.utils import timezone
 from .forms import TestForm
 from .models import Question, Answer, CheckList
 from django.db.models import Count
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 
 @login_required
 def main_view(request):
@@ -31,10 +31,11 @@ def market(request):
 @login_required
 def test_view(request):
     today = timezone.now().date()
+    one_week_ago = today - timedelta(days=7)
     user = request.user
 
-    if Answer.objects.filter(user=user, date=today).exists():
-        return redirect('green:list')
+    if Answer.objects.filter(user=user, date__gte=one_week_ago).exists():
+        return redirect('green:result')
 
     questions = Question.objects.all()
 
@@ -64,26 +65,50 @@ def result_view(request):
     scores = {answer.question.id: answer.score for answer in answers}
     total_score = sum(int(score) for score in scores.values())
 
-    latest_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[:10]
-    answers = sorted(latest_answers, key=lambda x: x.score)[:5]
-
-    answer_list = [ answer.question for answer in answers ]
-
-    second_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[10:20]
-    third_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[20:30]
+    to_do_answers = sorted(answers, key=lambda x: x.score)[:5]
+    to_do_list = [ answer.question.to_do for answer in to_do_answers ]
 
     context = {
         'scores': scores,
         'total_score': total_score,
-        'answer_list' : answer_list,
-        'second_answers': second_answers,
-        'third_answers': third_answers,
+        'to_do_list' : to_do_list,
     }
 
     return render(request, 'green/result.html', context)
 
-@login_required
 def detail_result_view(request):
+    answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[:10]
+
+    result = []
+    for answer in answers:
+        question = answer.question
+        result.append({
+            'question': question.question,
+            'score': answer.score,
+            'tip': question.tip,
+        })
+
+    context = {
+        'result': result,
+    }
+    return render(request, 'green/detail_result.html', context)
+
+
+@login_required
+def analysis_view(request):
+    answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[:10]
+    to_do_answers = sorted(answers, key=lambda x: x.score)[:5]
+    to_do_list = [ answer.question.to_do for answer in to_do_answers ]
+
+    context = {
+        'answers': answers,
+        'to_do_list': to_do_list,
+    }
+
+    return render(request, 'green/analysis.html', context)
+
+@login_required
+def detail_analysis_view(request):
     latest_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[:10]
     second_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[10:20]
     third_answers = Answer.objects.filter(user=request.user).order_by('-timestamp')[20:30]
@@ -94,7 +119,7 @@ def detail_result_view(request):
         'third_answers': third_answers,
     }
 
-    return render(request, 'green/detail_result.html', context)
+    return render(request, 'green/detail_analysis.html', context)
 
 
 @login_required
@@ -107,7 +132,7 @@ def list_view(request):
 
     # 체크 리스트
     if request.method == 'POST':
-        CheckList.objects.filter(user=request.user, date=date.today()).delete()
+        CheckList.objects.filter(user=request.user, date=timezone.now().date()).delete()
 
         for question in to_do_list:
             complete = request.POST.get(f'to_do_{question.id}', '0') == '1'
@@ -115,16 +140,16 @@ def list_view(request):
                 CheckList.objects.create(
                     user=request.user,
                     question=question,
-                    date=date.today(),
+                    date=timezone.now().date(),
                     complete=True
                 )
         return redirect('green:list')
 
-    check_list = CheckList.objects.filter(user=request.user, date=date.today())
+    check_list = CheckList.objects.filter(user=request.user, date=timezone.now().date())
     completed_list = {list.question.id: list.complete for list in check_list}
 
     # 일주일 리포트
-    today = datetime.now().date()
+    today = timezone.now().date()
     sunday = today - timedelta(days=today.weekday())
     saturday = sunday + timedelta(days=6)
 
@@ -141,8 +166,8 @@ def list_view(request):
 
     # 올해 리포트
     year = today.year
-    january = date(year=year, month=1, day=1)
-    december = date(year=year, month=12, day=31)
+    january = timezone.datetime(year=year, month=1, day=1).date()
+    december = timezone.datetime(year=year, month=12, day=31).date()
 
     monthly_completion = CheckList.objects.filter(
         user=request.user,

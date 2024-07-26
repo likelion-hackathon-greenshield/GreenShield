@@ -13,16 +13,14 @@
     <br />
     <br />
     <hr />
-    <h1>지난 3회 평가 분석</h1>
-        {% for third_answer in third_answers %}
-            {{ third_answer.score }}<br>
+    <h1>설문 재확인 페이지</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for item in result %}
+            <p>{{ item.question }}</p>
+            <p>{{ item.score }}</p>
+            <p>팁: {{ item.tip }}</p>
+            <hr/>
         {% endfor %}
-        <hr>
-        {% for second_answer in second_answers %}
-            {{ second_answer.score }}<br>
-        {% endfor %}
-        <hr>
-        {% for latest_answer in latest_answers %}
-            {{ latest_answer.score }}<br>
-        {% endfor %}
+    </form>
 </body>
