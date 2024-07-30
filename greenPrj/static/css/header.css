@@ -1,0 +1,70 @@
+body {
+  background-color: #f3faed;
+}
+
+/* 헤더(top bar) */
+header.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 0 120px;
+  height: 80px;
+}
+header.top-bar p.user {
+  margin: 0 20px;
+
+  font-weight: 500;
+  font-size: 23px;
+}
+header.top-bar p.logout {
+  margin-left: 37px;
+
+  font-weight: 500;
+  font-size: 19px;
+}
+header.top-bar img.img-AnonymousProfile {
+  width: 60px;
+  height: 60px;
+}
+
+/* 네비게이션 바 */
+nav.top-bar {
+  position: relative;
+  z-index: 999;
+
+  background-color: #bae3b3;
+  padding: 0 120px;
+  height: 80px;
+}
+nav.top-bar div.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 80px;
+}
+nav.top-bar div.nav-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav.top-bar h1 {
+  width: 206px;
+  height: 36px;
+
+  font-weight: 500;
+  font-size: 35px;
+}
+nav.top-bar a {
+  margin-left: 64px;
+
+  font-weight: 500;
+  font-size: 25px;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: black;
+}
+nav.top-bar a.selected {
+  color: #5a976b;
+}

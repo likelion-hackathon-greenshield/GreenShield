@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/resetCSS.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  </head>
+  <body>
+    <!-- 헤더(top bar) -->
+    <header class="top-bar">
+      <p class="user">
+        <a href="{% url 'green:mypage' %}">{{ user.username }}</a>
+      </p>
+      <div>
+        <img
+          src="{% static 'img/anonymousProfile_header_60x60.png' %}"
+          alt="img"
+          class="img-AnonymousProfile"
+        />
+      </div>
+      <p class="logout"><a href="{% url 'logout' %}">로그아웃</a></p>
+    </header>
+    <!-- 네비게이션 바 -->
+    <nav class="top-bar">
+      <div class="container">
+        <div>
+          <h1>Green Shield</h1>
+          <!-- 차후 로고 추가 예정 <img src="" alt="img" /> -->
+        </div>
+        <div class="nav-list">
+          <!-- selected js 추가 필요 -->
+          <a href="{% url 'green:test' %}" class="selected"
+            >환경 호르몬 노출 평가</a
+          >
+          <a href="{% url 'green:list' %}">맞춤형 플래너</a>
+          <a href="{% url 'green:community' %}">커뮤니티</a>
+          <a href="{% url 'green:market' %}">추천 상품</a>
+          <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
+        </div>
+      </div>
+    </nav>
+  </body>
+</html>
