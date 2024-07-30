@@ -1,26 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인 페이지</title>
   </head>
   <body>
-    <h2>로그인</h2>
-    <form method="post">
-      {% csrf_token %}
-      <p>
-        <label for="{{ form.username.id_for_label }}">아이디:</label>
-        {{ form.username }} {% if form.username.errors %}
-        <span class="error">{{ form.username.errors }}</span>
-        {% endif %}
-      </p>
-      <p>
-        <label for="{{ form.password.id_for_label }}">비밀번호:</label>
-        {{ form.password }} {% if form.password.errors %}
-        <span class="error">{{ form.password.errors }}</span>
-        {% endif %}
-      </p>
-      <button type="submit">로그인</button>
-    </form>
-    <p><a href="{% url 'signup' %}">회원가입</a></p>
+    <div class="title">
+      <div class="title_text">Green Shield</div>
+    </div>
+
+    <div class="center_all">
+      <div class="login_title">
+        <div class="GS">Green Shield</div>
+        <div class="login_kor">&nbsp;로그인</div>
+      </div>
+
+      <div class="box_middle_all">
+        <form method="post">
+          {% csrf_token %}
+          <div class="box_middle">
+            <div class="id_box">
+              <div class="id_box_input">
+                <label for="{{ form.username.id_for_label }}" style="display: none">아이디:</label>
+                {{ form.username }} {% if form.username.errors %}
+                <span class="error">{{ form.username.errors }}</span>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="password_box">
+              <div class="password_box_input">
+                <label for="{{ form.password.id_for_label }}" style="display: none">비밀번호:</label>
+                {{ form.password }} {% if form.password.errors %}
+                <span class="error">{{ form.password.errors }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          <div class="box_middle2">
+            <div class="login_box">
+              <div class="login_box_kor">
+                <button type="submit" class="login_button">로그인</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="login_keep_box">
+        <div class="login_keep_box_input">
+          <input type="checkbox" class="custom-checkbox" />
+          <div class="login_keep_text">로그인 유지</div>
+        </div>
+      </div>
+
+      <div class="joinus">
+        <div class="joinus_text"><a href="{% url 'signup' %}">회원가입</a></div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const usernameInput = document.querySelector("input[name='username']");
+        const passwordInput = document.querySelector("input[name='password']");
+
+        if (usernameInput) {
+          usernameInput.setAttribute("placeholder", "아이디");
+        }
+
+        if (passwordInput) {
+          passwordInput.setAttribute("placeholder", "비밀번호");
+        }
+      });
+    </script>
   </body>
 </html>
