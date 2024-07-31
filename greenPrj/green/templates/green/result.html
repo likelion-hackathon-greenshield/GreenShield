@@ -1,29 +1,52 @@
-<body>
-  <h2>Green Shield</h2>
-  {{ user.username }}
-  <a href="{% url 'green:mypage' %}">마이페이지</a>
-  <a href="{% url 'logout' %}">로그아웃</a>
-  <br />
-  <hr />
-  <br />
-  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-  <a href="{% url 'green:community' %}">커뮤니티</a>
-  <a href="{% url 'green:market' %}">상품 추천</a>
-  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-  <br />
-  <br />
-  <hr />
-  <h1>분석 결과</h1>
-  <a href="{% url 'green:detail-result' %}">팁으로 넘어가는 페이지 주소</a>
-  <p>닉네임 {{ user.username }}</p>
-  <p>나의 점수: {{ total_score }}점</p>
-  <hr>
-  <h1>해야 할 일 리스트</h1>
-  <ul>
+{% load static %} {% include 'green/header.html' %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/result.css' %}" />
+  </head>
+
+  <body>
+    <!-- 설문조사 결과 페이지 -->
+    <section>
+      <h1 class="page-name">분석 결과</h1>
+      <a href="{% url 'green:detail-result' %}">
+        <div class="result-container">
+          <div class="profile">
+            <div class="profile-img">
+              <img
+                src="{% static 'img/anonymousProfile_surveyResult_116x116.png' %}"
+                alt="img"
+              />
+            </div>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="score">
+            <p>나의 점수</p>
+            <h4><span>{{ total_score }}점</span>/50점</h4>
+          </div>
+          <div class="graph-container">
+            <!-- 그래프 두 배 적용 수정 필요, js 추가? -->
+            <div class="graph"></div>
+            <p>{{ total_score }}%</p>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- 투두리스트 컴포넌트 -->
+    <a href="{% url 'green:list' %}">
+      <h1>해야 할 일 리스트</h1>
+    </a>
+    <ul>
       {% for to_do in to_do_list %}
-          <li>{{ to_do }}</li>
+      <li>{{ to_do }}</li>
       {% endfor %}
-  </ul>
-  <a href="{% url 'green:analysis' %}">추가 서비스 이용하기</a>
-</body>
+    </ul>
+    <a href="{% url 'green:analysis' %}">추가 서비스 이용하기</a>
+  </body>
+</html>

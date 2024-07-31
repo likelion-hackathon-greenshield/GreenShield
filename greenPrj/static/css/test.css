@@ -20,7 +20,7 @@ div.question-score-list {
   justify-content: space-between;
   align-items: center;
 
-  background-color: blue;
+  /* background-color: blue; */
 }
 p.tip {
   margin: 30px 0 -20px 0;
@@ -61,10 +61,6 @@ label.num {
 }
 div.input-container input:checked + label.num {
   background-color: #bae3b3;
-  color: red;
-}
-div.input-container input:checked {
-  background-color: #0e4604;
 }
 span.ko {
   font-weight: 500;
