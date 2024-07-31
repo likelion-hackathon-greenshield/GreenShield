@@ -1,0 +1,208 @@
+section {
+  margin: 124px 0 150px 0;
+  padding: 0 120px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+h1.page-name {
+  margin: 0 0 60px 0;
+
+  display: flex;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 40px;
+}
+/* 설문조사 결과 */
+div.result-container {
+  width: 730px;
+  height: 271px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 20px;
+
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25),
+    4px -2px 36px 0 rgba(0, 0, 0, 0.25);
+}
+/* 설문조사 결과 - 닉네임 */
+div.profile {
+  margin: 0 0 0 80px;
+}
+div.profile-img {
+  width: 116px;
+  height: 116px;
+
+  border-radius: 50%;
+  overflow: hidden;
+}
+div.profile-img img {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+div.profile p {
+  margin: 18px 0 0 0;
+
+  font-weight: 500;
+  font-size: 25px;
+  text-align: center;
+}
+/* 설문조사 결과 - 나의 점수 */
+div.score p {
+  margin: 0 0 16px 0;
+
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+}
+div.score h4 {
+  margin: 0;
+
+  font-weight: 900;
+  font-size: 40px;
+  text-align: center;
+}
+div.score span {
+  font-size: 60px;
+  color: #5a976b;
+}
+/* 설문조사 결과 - 원형 그래프 */
+div.graph-container {
+  margin: 0 80px 0 0;
+}
+div.graph {
+  position: relative;
+  width: 146px;
+  height: 146px;
+  border-radius: 50%;
+  background: conic-gradient(#bae3b3 0% 26%, #5a976b 26% 100%);
+}
+div.graph-container p {
+  margin: 8px 0 0 0;
+
+  font-weight: 900;
+  font-size: 25px;
+  text-align: center;
+}
+/* 투두 리스트 */
+section.todo-list {
+  margin: 0 48px;
+}
+section.chart {
+  margin: 0 48px;
+}
+div.clip {
+  width: 780px; /* +250px */
+  height: 52px;
+  position: relative;
+  z-index: 1;
+
+  border-radius: 16px;
+  background-color: #5a976b;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+div.circle-left {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  right: 360px; /* left 28px */
+  bottom: 32px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+div.circle-right {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  left: 360px; /* left 490px */
+  bottom: 44px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+form.todo-list {
+  box-sizing: border-box;
+  padding: 68px 48px 48px 48px;
+  width: 780px;
+  /* height: 678px; */
+
+  position: relative;
+  bottom: 54px;
+  z-index: 0;
+
+  border-radius: 16px;
+  background-color: #e4f6e0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+div.list {
+  margin: 24px 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+input.list-checkbox {
+  /* width: 36px;
+  height: 36px;
+  vertical-align: top; */
+  opacity: 0;
+}
+label.list-checkbox {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+  vertical-align: top;
+
+  border: 2px solid #dadada;
+  border-radius: 5px;
+  background-color: white;
+}
+img.list-checkbox {
+  margin: 0;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+}
+input.list-checkbox:checked + label img.list-checkbox {
+  opacity: 1;
+}
+label.list-content {
+  margin: 4px 0 0 12px;
+
+  display: inline-block;
+  width: 630px;
+  word-wrap: break-word;
+  white-space: normal;
+
+  font-weight: 500px;
+  font-size: 24px;
+}
+/* 제출 버튼 */
+button.submit {
+  width: 480px;
+  height: 72px;
+  margin: 32px 0 64px 0;
+
+  font-weight: 900;
+  font-size: 30px;
+  color: white;
+
+  border: none;
+  border-radius: 20px;
+  background-color: #5a976b;
+}
