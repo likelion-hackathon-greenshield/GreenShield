@@ -1,0 +1,82 @@
+section {
+  padding: 220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.question-item {
+  margin-bottom: 96px;
+  width: 830px;
+}
+p.question {
+  margin: 0 0 36px 0;
+  font-weight: 500;
+  font-size: 25px;
+}
+div.question-score-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* background-color: blue; */
+}
+p.tip {
+  margin: 30px 0 -20px 0;
+  font-weight: 900;
+  font-size: 20px;
+
+  color: #5a976b;
+}
+/* 라디오 버튼 컨테이너 */
+div.input-container {
+  width: 102px;
+  height: 126px;
+
+  text-align: center;
+  position: relative;
+}
+div.input-container input {
+  position: absolute;
+  opacity: 0;
+}
+label.num {
+  display: inline-block;
+  margin: 6px;
+
+  width: 90px;
+  height: 90px;
+
+  font-weight: 900;
+  font-size: 36px;
+  text-align: center;
+  line-height: 86px;
+
+  border-radius: 16px;
+  background-color: white;
+  cursor: pointer;
+
+  transition: background-color 0.3s;
+}
+div.input-container input:checked + label.num {
+  background-color: #bae3b3;
+}
+span.ko {
+  font-weight: 500;
+  font-size: 18px;
+}
+/* 제출 버튼 */
+button.submit {
+  width: 340px;
+  height: 100px;
+  margin: 64px;
+
+  font-weight: 500;
+  font-size: 30px;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+  background-color: #5a976b;
+}

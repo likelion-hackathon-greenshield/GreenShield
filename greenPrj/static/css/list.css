@@ -1,0 +1,319 @@
+section h1.page-name {
+  margin: 124px 0 16px 0;
+
+  font-weight: 500;
+  font-size: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+div.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.todo-list {
+  margin: 0 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+section.chart {
+  margin: 0 48px;
+}
+/* 투두리스트 */
+section.todo-list h1.page-name {
+  margin: 0 0 36px 0;
+
+  display: flex;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: 32px;
+}
+div.clip {
+  width: 530px;
+  height: 52px;
+  position: relative;
+  z-index: 1;
+
+  border-radius: 16px;
+  background-color: #5a976b;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+div.circle-left {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  /* left: 28px; */
+  right: 234px;
+  bottom: 32px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+div.circle-right {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  /* left: 490px; */
+  left: 234px;
+  bottom: 44px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+form.todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+ul.todo-list {
+  box-sizing: border-box;
+  padding: 68px 48px 48px 48px;
+  width: 530px;
+  /* height: 678px; */
+
+  position: relative;
+  bottom: 54px;
+  z-index: 0;
+
+  border-radius: 16px;
+  background-color: #e4f6e0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+li.list {
+  margin: 24px 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+input.list-checkbox {
+  /* width: 36px;
+  height: 36px;
+  vertical-align: top; */
+  opacity: 0;
+}
+label.list-checkbox {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+  vertical-align: top;
+
+  border: 2px solid #dadada;
+  border-radius: 5px;
+  background-color: white;
+}
+img.list-checkbox {
+  margin: 0;
+  width: 36px;
+  height: 36px;
+  opacity: 0;
+}
+input.list-checkbox:checked + label img.list-checkbox {
+  opacity: 1;
+}
+label.list-content {
+  margin: 4px 0 0 12px;
+
+  display: inline-block;
+  width: 380px;
+  word-wrap: break-word;
+  white-space: normal;
+
+  font-weight: 500px;
+  font-size: 24px;
+}
+/* 제출 버튼 */
+button.todo-submit {
+  width: 400px;
+  height: 80px;
+  margin: 12px 0 64px 0;
+
+  font-weight: 900;
+  font-size: 30px;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #5a976b;
+}
+/* 분석 결과 그래프 */
+div.chart {
+  margin: 52px 0px;
+  padding: 16px;
+  width: 500px;
+  height: 288px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 12px 34px -10px rgba(58, 77, 233, 0.15);
+}
+h4.chart-name {
+  margin: 4px 0 6px 0;
+  font-weight: 900;
+  font-size: 20px;
+  text-align: center;
+}
+p.chart-date {
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+ul.bar1 {
+  margin: 12px 0 16px 0;
+  padding: 0;
+  width: 290px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+ul.bar1 li {
+  list-style-type: none;
+
+  width: 13px;
+  height: 92px;
+
+  border-radius: 30px;
+  background-color: #e9ecf1;
+}
+ul.bar1-x-axis {
+  margin: 0;
+  padding: 0;
+  width: 290px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ul.bar1-x-axis li {
+  width: 13px;
+
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+/* 분석 결과 그래프 - 경계선 */
+div.line {
+  margin: 16px 0 14px 0;
+  padding: 0.5px;
+  width: 292px;
+  height: 0;
+  background-color: rgba(175, 175, 175, 0.5);
+}
+/* 분석 결과 그래프 - 현 상태 */
+div.state {
+  width: 290px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.icon-smile {
+  margin-right: 12px;
+  width: 33px;
+  height: 33px;
+}
+img.icon-smile {
+  width: 33px;
+  height: 33px;
+}
+h4.state {
+  margin: 0 0 4px 0;
+  padding: 0;
+
+  font-weight: 900;
+  font-size: 15px;
+}
+p.state {
+  margin: 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+}
+/* 분석 결과 곡선 그래프 */
+div.chart-margin {
+  margin: 0 0 -130px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+ul.bar2 {
+  margin: 24px 0 16px 0;
+  padding: 0;
+  width: 380px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+ul.bar2 li {
+  list-style-type: none;
+
+  width: 40px;
+  height: 128px;
+
+  background-color: #f69d3c;
+  background: linear-gradient(180deg, #ffffff 0%, #f3faed 100%);
+}
+ul.bar2-x-axis {
+  margin: 0;
+  padding: 0;
+  width: 380px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ul.bar2-x-axis li {
+  width: 40px;
+
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+
+  color: black;
+  opacity: 0.5;
+}
+div.bar2-line {
+  position: relative;
+  bottom: 180px;
+
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 388px;
+  height: 130px;
+  /* background-color: #cad8db; */
+}
+svg.bar2-line {
+  width: 388px;
+  height: 130px;
+}
+path.bar2-line {
+  border-radius: 24px;
+  /* clip-path: path("M 00 300 \ C 150 300 150 50 300 50 Z"); */
+}

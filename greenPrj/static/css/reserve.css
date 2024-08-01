@@ -1,0 +1,185 @@
+section.container {
+  margin: 128px 0 180px 0;
+  padding: 0 120px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+section.expert-info {
+  margin: 0 80px 0 120px;
+  width: 435px;
+}
+/* 전문가 사진 */
+section div.img-back_reservation_expert {
+  margin: 0;
+  padding: 0;
+
+  width: 436px;
+  height: 506px;
+
+  border-radius: 24px;
+  box-shadow: 0 24px 40px 0 rgba(43, 56, 76, 0.1);
+
+  overflow: hidden;
+}
+section img.img-back_reservation_expert {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 전문가 정보 */
+section.expert-info div.expert-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 32px 0 4px 0;
+}
+section.expert-info h4.name {
+  margin: 0;
+  padding: 0;
+
+  font-weight: 900;
+  font-size: 30px;
+}
+section.expert-info button {
+  margin: 0;
+  padding: 0;
+
+  width: 108px;
+  height: 48px;
+
+  border: none;
+  border-radius: 4px;
+  background-color: #5a976b;
+
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+}
+section.expert-info p.location {
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 20px;
+  color: #7d7d7d;
+}
+section.expert-info p.introduce {
+  margin: 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 20px;
+  color: #7d7d7d;
+
+  text-align: justify;
+}
+/* 상담 예약 */
+section.reservation-time {
+  margin: 0 80px 0 120px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+/* 예약 달력 - head */
+input#date {
+  height: 0px;
+  visibility: hidden;
+}
+section.reservation-time div.calendar {
+  box-sizing: border-box;
+  margin-bottom: 52px;
+  padding: 60px 67.5px;
+
+  width: 522px;
+  height: 522px;
+
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.13);
+}
+section.reservation-time div.month-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 34px;
+}
+section.reservation-time h4.month {
+  margin: 0;
+  padding: 0;
+  font-weight: 900;
+  font-size: 28px;
+}
+section.reservation-time button.icon-arrow {
+  margin: 1px 0 1px 12px;
+  padding: 0;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+  background-color: #bae3b3;
+
+  box-shadow: 0 2px 8px 0 rgba(190, 190, 190, 0.15);
+}
+section.reservation-time img.icon-arrow {
+  width: 16px;
+  height: 16px;
+  padding: 8px;
+}
+/* 예약 달력 - body */
+section.reservation-time table.month-contents {
+  margin: 22px -12px 0 -12px;
+}
+section.reservation-time thead th {
+  padding: 0 12px 8px 12px;
+  width: 45px;
+  height: 24px;
+
+  font-weight: 500;
+  font-size: 16px;
+  color: #696969;
+}
+section.reservation-time tbody td {
+  padding: 0 12px 16px 12px;
+  width: 45px;
+  height: 50px;
+
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+
+  border-radius: 12px;
+}
+/* 예약 시간 */
+section.reservation-time div.time-list {
+  width: 610px;
+  height: 280px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section.reservation-time button.time {
+  margin: 16px;
+  width: 158px;
+  height: 65px;
+
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: transparent;
+}

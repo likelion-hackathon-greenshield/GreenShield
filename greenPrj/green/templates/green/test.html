@@ -1,23 +1,215 @@
-<body>
-  <h2>Green Shield</h2>
-  {{ user.username }}
-  <a href="{% url 'green:mypage' %}">마이페이지</a>
-  <a href="{% url 'logout' %}">로그아웃</a>
-  <br />
-  <hr />
-  <br />
-  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-  <a href="{% url 'green:community' %}">커뮤니티</a>
-  <a href="{% url 'green:market' %}">상품 추천</a>
-  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-  <br />
-  <br />
-  <hr />
-  <h1>환경 호르몬 노출 평가</h1>
-  <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }} <!-- 뎁툴 확인 필요 -->
-      <button type="submit">제출</button>
-  </form>
-</body>
+{% load static %} {% include 'green/header.html' %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+  </head>
+
+  <body>
+    <!-- 설문조사 페이지 -->
+    <section>
+      <form method="post">
+        {% csrf_token %}
+
+        <!-- 설문 문항 01번 -->
+        <div class="question-item" id="id_question_1">
+          <p class="question">{{ form.question_1.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_1 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 02번 -->
+        <div class="question-item" id="id_question_2">
+          <p class="question">{{ form.question_2.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_2 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 03번 -->
+        <div class="question-item" id="id_question_3">
+          <p class="question">{{ form.question_3.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_3 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 04번 -->
+        <div class="question-item" id="id_question_4">
+          <p class="question">{{ form.question_4.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_4 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 05번 -->
+        <div class="question-item" id="id_question_5">
+          <p class="question">{{ form.question_5.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_5 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 06번 -->
+        <div class="question-item" id="id_question_6">
+          <p class="question">{{ form.question_6.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_6 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 07번 -->
+        <div class="question-item" id="id_question_7">
+          <p class="question">{{ form.question_7.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_7 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 08번 -->
+        <div class="question-item" id="id_question_8">
+          <p class="question">{{ form.question_8.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_8 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 09번 -->
+        <div class="question-item" id="id_question_9">
+          <p class="question">{{ form.question_9.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_9 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 설문 문항 10번 -->
+        <div class="question-item" id="id_question_10">
+          <p class="question">{{ form.question_10.label }}</p>
+          <div class="question-score-list">
+            {% for radio in form.question_10 %}
+            <!-- <label for="{{ radio.id_for_label }}"> -->
+            <div class="input-container">
+              <!-- input -->
+              {{ radio.tag }}
+              <label class="num" for="{{ radio.id_for_label }}">
+                {{ forloop.counter }}
+              </label>
+              <span class="ko">{{ radio.choice_label }}</span>
+            </div>
+            <!-- </label> -->
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- {{ form.as_p }} -->
+        <!-- 뎁툴 확인 필요 -->
+        <button type="submit">제출</button>
+      </form>
+    </section>
+  </body>
+</html>
