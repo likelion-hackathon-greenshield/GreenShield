@@ -9,11 +9,6 @@
     <title>GreenShield</title>
 
     <link rel="stylesheet" href="{% static 'css/list.css' %}" />
-    <script>
-      // Django 템플릿 엔진을 사용하여 JavaScript 변수에 데이터 할당
-      var completionData = {{ completion_by_day|safe }};
-    </script>
-    <script src="{% static 'js/list.js' %}"></script>
   </head>
 
   <body>
@@ -141,5 +136,11 @@
         {% endfor %}
       </tbody>
     </table>
+
+    <script>
+      // Django 템플릿 엔진을 사용하여 JavaScript 변수에 데이터 할당
+      var completionData = {{ completion_by_day|safe }};
+    </script>
+    <script src="{% static 'js/list.js' %}"></script>
   </body>
 </html>
