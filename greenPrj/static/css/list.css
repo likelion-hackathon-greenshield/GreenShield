@@ -7,7 +7,7 @@ section h1.page-name {
   display: flex;
   justify-content: center;
 }
-div.container {
+div.container-list {
   margin: 0 48px;
   display: flex;
   justify-content: center;
