@@ -33,18 +33,21 @@
           </div>
         </section>
         <section class="reservation-time">
+          <!-- 예약 날짜 선택 -->
+          <input type="date" id="date" name="date" required />
           <div class="calendar">
             <div class="month-title">
-              <h4 class="month">August 2024</h4>
+              <!-- August 2024 -->
+              <h4 class="month" id="month-title"></h4>
               <div>
-                <button class="icon-arrow">
+                <button type="button" class="icon-arrow" id="prev-month">
                   <img
                     src="{% static 'img/iconReservationArrowLeft_16x16.png' %}"
                     alt="img"
                     class="icon-arrow"
                   />
                 </button>
-                <button class="icon-arrow">
+                <button type="button" class="icon-arrow" id="next-month">
                   <img
                     src="{% static 'img/iconReservationArrowRight_16x16.png' %}"
                     alt="img"
@@ -63,7 +66,8 @@
                 <th>Fri</th>
                 <th>Sat</th>
               </thead>
-              <tbody>
+              <tbody id="calendar-body">
+                <!-- 날짜가 동적으로 생성될 부분 -->
                 <tr>
                   <td></td>
                   <td></td>
@@ -112,9 +116,7 @@
               </tbody>
             </table>
           </div>
-          <!-- 예약 날짜 선택 -->
-          <label for="date"></label>
-          <input type="date" id="date" name="date" required />
+
           <!-- 예약 시간 선택 -->
           <label for="time"></label>
           <select id="time" name="time" required>
@@ -142,5 +144,6 @@
         </section>
       </section>
     </form>
+    <script src="{% static 'js/calendar.js' %}"></script>
   </body>
 </html>

@@ -89,6 +89,10 @@ section.reservation-time {
   align-items: center;
 }
 /* 예약 달력 - head */
+input#date {
+  height: 0px;
+  visibility: hidden;
+}
 section.reservation-time div.calendar {
   box-sizing: border-box;
   margin-bottom: 52px;
@@ -153,6 +157,8 @@ section.reservation-time tbody td {
   font-weight: 500;
   font-size: 24px;
   text-align: center;
+
+  border-radius: 12px;
 }
 /* 예약 시간 */
 section.reservation-time div.time-list {
