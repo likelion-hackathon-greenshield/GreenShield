@@ -1,0 +1,104 @@
+section h1.page-name {
+  margin: 132px 0 80px 0;
+
+  display: flex;
+  justify-content: center;
+}
+section ol.expert-lists {
+  margin: 0;
+  padding: 0 120px;
+
+  list-style: none;
+  counter-reset: list-counter;
+}
+section li.expert-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 108px;
+
+  counter-increment: list-counter;
+  position: relative;
+  padding-left: 102px;
+}
+section li.expert-list::before {
+  content: counter(list-counter);
+  position: absolute;
+  left: 45px;
+  text-align: center;
+
+  font-weight: 900;
+  font-size: 50px;
+  color: #5a976b;
+}
+/* 전문가 사진 */
+section div.img-back_reservation_expert {
+  margin: 0;
+  padding: 0;
+
+  width: 300px;
+  height: 348px;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+}
+section img.img-back_reservation_expert {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 전문가 정보 */
+section div.container {
+  width: 718px;
+  height: 348px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+}
+section div.info-container {
+  padding: 28px;
+}
+section h4.name {
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  font-weight: 900;
+  font-size: 30px;
+}
+section p.location {
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 20px;
+  color: #7d7d7d;
+}
+section p.introduce {
+  margin: 0 0 20px 0;
+  padding: 0;
+
+  font-weight: 500;
+  font-size: 20px;
+  color: #333333;
+}
+section button {
+  margin: 28px;
+
+  width: 108px;
+  height: 48px;
+
+  border: none;
+  border-radius: 4px;
+  background-color: #5a976b;
+
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+}

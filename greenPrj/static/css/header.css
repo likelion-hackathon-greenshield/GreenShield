@@ -27,6 +27,10 @@ header.top-bar img.img-AnonymousProfile {
   width: 60px;
   height: 60px;
 }
+header.top-bar a {
+  text-decoration: none;
+  color: black;
+}
 
 /* 네비게이션 바 */
 nav.top-bar {
@@ -49,14 +53,17 @@ nav.top-bar div.nav-list {
   justify-content: space-between;
   align-items: center;
 }
-nav.top-bar h1 {
+nav.top-bar h1 a {
   width: 206px;
   height: 36px;
 
   font-weight: 500;
   font-size: 35px;
+
+  text-decoration: none;
+  color: black;
 }
-nav.top-bar a {
+nav.top-bar div.nav-list a {
   margin-left: 64px;
 
   font-weight: 500;
