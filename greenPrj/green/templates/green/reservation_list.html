@@ -2,26 +2,58 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>나의 예약 내역</title>
+    <!-- reset css입니다. 우선순위 문제로 개별 페이지 css는 아래쪽에 배치해주세요.(아래쪽이 더 높은 우선순위) -->
+    <link rel="stylesheet" href="{% static '/css/resetCSS.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/header.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/my_reservation.css' %}" />
   </head>
+
   <body>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <h2>나의 예약 내역</h2>
-    <ul>
+    {% include 'green/header.html' %}
+
+    <!--my_reservation 시작-->
+    <div class="title_all">
+      <div class="top_wri_and_back">
+        <div class="written_article">
+          <div class="written_article_text">나의 예약 내역</div>
+        </div>
+
+        <div class="back_mypage_box">
+          <div class="back_mypage_text"><a href="{% url 'green:mypage' %}">마이페이지로 돌아가기</a></div>
+        </div>
+      </div>
+    </div>
+
+    {% if reservations %}
+    <div class="reservations_container">
       {% for reservation in reservations %}
-      <li>
-        <p>예약날짜: {{ reservation.date }} {{ reservation.time }}</p>
-        <p>전문가 : {{ reservation.expert.name }}</p>
-      </li>
-      {% empty %}
-      <p>예약 내역이 없습니다.</p>
+      <div class="reservation_1">
+        <div class="pic_and_box">
+          <!--
+          <div class="expert_picture">
+            <img src="{% static './img/expert1.png' %}" width="500" height="500" />
+          </div>
+          -->
+
+          <div class="box_all">
+            <div class="date_box">
+              <div class="date_text">{{ reservation.date }} {{ reservation.time }}</div>
+            </div>
+            <div class="expert_box">
+              <div class="expert_text">{{ reservation.expert.name }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
       {% endfor %}
-    </ul>
-    <hr />
-    <a href="{% url 'green:mypage' %}">마이페이지로 돌아가기</a>
+    </div>
+    {% else %}
+    <div class="no_posts_message_box">
+      <div class="no_posts_message">예약 내역이 없습니다.</div>
+    </div>
+    {% endif %}
   </body>
 </html>

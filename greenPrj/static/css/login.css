@@ -1,0 +1,231 @@
+body {
+  background-color: #f3faed;
+  transform: scale(1.5);
+  transform-origin: top left; /* 좌측 상단에서 확대 */
+  /* 확대 시 스크롤바가 생기지 않도록 추가 스타일 */
+  overflow: hidden;
+  width: 100vw; /* 100% 뷰포트 너비 */
+  height: 100vh; /* 100% 뷰포트 높이 */
+}
+
+.title_text {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.title {
+  display: flex;
+  margin: 30px;
+}
+
+.center_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-right: 700px;
+}
+
+.login_title {
+  font-size: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: flex-start; /* 수평 정렬을 왼쪽으로 */
+  width: 800px; /* 원하는 너비 설정 */
+}
+
+.GS {
+  color: #5a976b; /*연그린*/
+  font-size: 18px;
+}
+
+.login_kor {
+  font-size: 18px;
+}
+
+.box_middle_all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 박스 전체를 수평 중앙 정렬 */
+}
+
+.id_box {
+  width: 800px;
+  height: 55px;
+  border: solid 2px #6e9a79;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.id_box_input {
+  width: 800px;
+  height: 55px;
+  border: 0px;
+  position: relative;
+}
+
+.id_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.password_box {
+  width: 800px;
+  height: 55px;
+  border: solid 2px #6e9a79;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+.password_box_input {
+  width: 800px;
+  height: 55px;
+  border: 0px;
+  position: relative;
+}
+
+.password_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.box_middle2 {
+  display: flex;
+  justify-content: center;
+}
+
+.login_box {
+  width: 800px;
+  height: 55px;
+  border: solid 1.5px #6e9a79;
+  border-radius: 10px;
+  background-color: #6e9a79;
+  display: flex;
+  justify-content: center;
+}
+
+.login_box_kor {
+  font-size: 20px;
+  color: white;
+  margin-top: 11px;
+}
+
+.login_button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  /* 버튼의 기본 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* 버튼의 기본 크기와 위치 조정 */
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+.login_button:hover,
+.login_button:active,
+.login_button:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.login_keep_box {
+  display: flex;
+  justify-content: center;
+  width: 800px; /* login_keep_box를 수평 정렬 */
+  margin-top: 30px;
+}
+
+.login_keep_box_input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* 수평 정렬을 왼쪽으로 */
+  width: 100%; /* 부모 요소의 너비를 채움 */
+}
+
+.login_keep_text {
+  font-size: 14px;
+  color: grey;
+  margin-left: 1px;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #6e9a79;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.custom-checkbox:checked {
+  background-color: #6e9a79;
+}
+
+.custom-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.joinus {
+  display: flex;
+  justify-content: center;
+}
+
+.joinus_text {
+  font-size: 14px;
+  font-weight: bold;
+  color: grey;
+  margin-top: 50px;
+}
+
+.joinus_text a {
+  color: grey;
+}
+
+.joinus_text a:visited {
+  color: grey;
+}
+
+.joinus_text a:hover {
+  color: grey;
+}
+
+.joinus_text a:active {
+  color: grey;
+}

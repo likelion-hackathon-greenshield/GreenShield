@@ -1,0 +1,160 @@
+.logout_text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.logout {
+  margin-left: 50px;
+}
+
+.title_all {
+  margin-left: 100px;
+  margin-top: 80px;
+}
+
+.top_wri_and_back {
+  display: flex;
+  flex-direction: row;
+}
+
+.written_article_text {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.written_article {
+  margin-right: 8px;
+}
+
+.back_mypage_box {
+  width: 240px;
+  height: 50px;
+  border: solid 2px #bae3b3;
+  border-radius: 15px;
+  background-color: #bae3b3;
+
+  margin-left: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_mypage_text {
+  font-size: 18px;
+  color: black;
+}
+
+.back_mypage_text a {
+  color: black;
+  text-decoration: none;
+}
+
+.back_mypage_text a:visited {
+  color: black;
+}
+
+.back_mypage_text a:hover {
+  color: black;
+}
+
+.back_mypage_text a:active {
+  color: black;
+}
+
+.article_box {
+  width: 400px;
+  height: 250px;
+  border: 0px white;
+  background: transparent;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.name {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.date {
+  font-size: 20px;
+  font-weight: bold;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.text {
+  margin-bottom: 40px;
+}
+
+/*
+.bottom_all {
+  display: flex;
+  margin-top: 120px;
+  margin-left: 510px;
+}
+
+.bottom_1_and_2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.bottom_1 {
+  font-size: 17px;
+  font-weight: bold;
+
+  margin-right: 10px;
+}
+
+.bottom_2 {
+  font-size: 17px;
+  font-weight: bold;
+}
+*/
+
+.article_pro_box {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.article_set1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.article_all {
+  display: flex;
+  flex-direction: row;
+}
+
+.no_posts_message_box {
+  display: flex;
+  text-align: center;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
+.no_posts_message {
+  font-size: 27px;
+  color: #3d3d3d;
+}
+
+.article_all a {
+  color: black;
+  text-decoration: none;
+}
+
+.article_all a:visited {
+  color: black;
+}
+
+.article_all a:hover {
+  color: black;
+}
+
+.article_all a:active {
+  color: black;
+}

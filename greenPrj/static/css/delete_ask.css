@@ -1,0 +1,183 @@
+body {
+  background-color: #f3faed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 340px;
+  margin-right: 100px;
+}
+
+#content {
+  transform: scale(1.5);
+  transform-origin: center; /* 좌측 상단에서 확대 */
+  /* 확대 시 스크롤바가 생기지 않도록 추가 스타일 */
+  overflow: hidden;
+}
+
+.delete_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.delete_ask_1 {
+  font-size: 28px;
+  font-weight: bolder;
+  margin-bottom: 12px;
+}
+
+.delete_ask_2 {
+  font-size: 18px;
+}
+
+/*box 시작, 다른 페이지 box와 동일 */
+.delete_box_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*box1*/
+.delete_box1 {
+  width: 140px;
+  height: 40px;
+  border: solid 2px #c20909;
+  border-radius: 10px;
+  background-color: #c20909;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  /* 버튼의 기본 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* 버튼의 기본 크기와 위치 조정 */
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+.login_button:hover,
+.login_button:active,
+.login_button:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/*
+.delete_box1_text {
+  font-size: 15px;
+  color: white;
+}
+
+.delete_box1_text a {
+  color: white;
+  text-decoration: none;
+}
+
+.delete_box1_text a:visited {
+  color: white;
+}
+
+.delete_box1_text a:hover {
+  color: white;
+}
+
+.delete_box1_text a:active {
+  color: white;
+}*/
+
+/*box2*/
+.delete_box2 {
+  width: 140px;
+  height: 40px;
+  border: solid 2px black;
+  border-radius: 10px;
+  background-color: white;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_box2_text {
+  font-size: 15px;
+  color: black;
+}
+
+.delete_box2_text a {
+  color: black;
+  text-decoration: none;
+}
+
+.delete_box2_text a:visited {
+  color: black;
+}
+
+.delete_box2_text a:hover {
+  color: black;
+}
+
+.delete_box2_text a:active {
+  color: black;
+}
+
+/* delete_done */
+.delete_done_all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_done1 {
+  font-size: 20px;
+  font-weight: bold;
+
+  color: #5a976b;
+
+  margin-bottom: 30px;
+}
+
+.delete_done2 {
+  font-size: 20px;
+
+  margin-bottom: 40px;
+}
+
+.delete_done3 {
+  font-size: 17px;
+  color: black;
+  font-weight: bold;
+}
+
+.delete_done3 a {
+  color: black;
+}
+
+.delete_done3 a:visited {
+  color: black;
+}
+
+.delete_done3 a:hover {
+  color: black;
+}
+
+.delete_done3 a:active {
+  color: black;
+}

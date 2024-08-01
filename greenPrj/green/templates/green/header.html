@@ -13,11 +13,7 @@
         <a href="{% url 'green:mypage' %}">{{ user.username }}</a>
       </p>
       <div>
-        <img
-          src="{% static 'img/anonymousProfile_header_60x60.png' %}"
-          alt="img"
-          class="img-AnonymousProfile"
-        />
+        <img src="{% static 'img/anonymousProfile_header_60x60.png' %}" alt="img" class="img-AnonymousProfile" />
       </div>
       <p class="logout"><a href="{% url 'logout' %}">로그아웃</a></p>
     </header>
@@ -30,9 +26,7 @@
         </div>
         <div class="nav-list">
           <!-- selected js 추가 필요 -->
-          <a href="{% url 'green:test' %}" class="selected"
-            >환경 호르몬 노출 평가</a
-          >
+          <a href="{% url 'green:test' %}" class="selected">환경 호르몬 노출 평가</a>
           <a href="{% url 'green:list' %}">맞춤형 플래너</a>
           <a href="{% url 'green:community' %}">커뮤니티</a>
           <a href="{% url 'green:market' %}">추천 상품</a>

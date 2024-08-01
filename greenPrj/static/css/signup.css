@@ -1,0 +1,522 @@
+.error {
+  display: block;
+}
+
+.errorlist {
+  padding-left: 20px;
+  margin: 0px;
+}
+
+.errorlist li {
+  color: red;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+body {
+  background-color: #f3faed;
+  transform: scale(1.5); /* 콘텐츠를 1.35배로 확대 */
+  transform-origin: top left; /* 좌측 상단에서 확대 */
+  /* 확대 시 스크롤바가 생기지 않도록 추가 스타일 */
+  overflow-x: hidden;
+  width: 100vw; /* 100% 뷰포트 너비 */
+  height: 100vh; /* 100% 뷰포트 높이 */
+}
+
+.body_all {
+  margin-top: 50px;
+  margin-right: 750px;
+}
+
+.signup_top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.signup_top_all {
+  display: flex;
+  justify-content: center;
+}
+
+.middle_box_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.GS {
+  color: #5a976b; /*연그린*/
+  font-size: 20px;
+}
+
+.signup_title_kor {
+  font-size: 20px;
+}
+
+.signup_comment_text {
+  font-size: 14px;
+  color: grey;
+}
+
+.signup_title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+
+/*box 복사/붙여넣기 */
+/*1set 시작*/
+.id_box_all {
+  margin-bottom: 5px;
+}
+
+.id_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.id_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.id_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.id_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+/*한 세트 끝*/
+
+.password_box_all {
+  margin-bottom: 5px;
+}
+
+.password_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.password_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.password_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.password_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.password_re_box_all {
+  margin-bottom: 5px;
+}
+
+.password_re_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.password_re_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.password_re_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.password_re_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.name_box_all {
+  margin-bottom: 5px;
+}
+
+.name_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.name_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.name_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.name_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/*옆에 생기는 스핀 버튼 삭제 추가 구현되어있음 */
+.number_box_all {
+  margin-bottom: 5px;
+}
+
+.number_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.number_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.number_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.number_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.number_box_input input::-webkit-outer-spin-button,
+.number_box_input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.email_box_all {
+  margin-bottom: 5px;
+}
+
+.email_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.email_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.email_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.email_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/*생년월일*/
+.birth_box_all {
+  margin-bottom: 5px;
+}
+
+.birth_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.birth_box {
+  width: 500px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 35px;
+}
+
+.birth_box_input {
+  width: 500px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.birth_box_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+/*.birth_box_all {
+  margin-bottom: 5px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.birth_box_123 {
+  display: flex;
+  flex-direction: row;
+}
+
+.birth_box_text {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.birth_box1 {
+  width: 150px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 20px;
+}
+
+.birth_box1_input {
+  width: 150px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.birth_box1_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.birth_box2 {
+  width: 150px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  margin-left: 22px;
+}
+
+.birth_box2_input {
+  width: 150px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.birth_box2_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.birth_box3 {
+  width: 150px;
+  height: 40px;
+  border: solid 2px #6e9a79;
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2px;
+  margin-bottom: 20px;
+  margin-left: 22px;
+}
+
+.birth_box3_input {
+  width: 150px;
+  height: 40px;
+  border: 0px;
+  position: relative;
+}
+
+.birth_box3_input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 10px;
+  box-sizing: border-box;
+} */
+
+/*bottom 시작*/
+.bottom_all {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bottom_left_box {
+  width: 160px;
+  height: 50px;
+  border: solid 2px #6e9a79;
+  border-radius: 10px;
+  background-color: #6e9a79;
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom_left_box_text {
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.signup_button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  /* 버튼의 기본 스타일 제거 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* 버튼의 기본 크기와 위치 조정 */
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+
+.signup_button:hover,
+.signup_button:active,
+.signup_button:visited {
+  color: white;
+  text-decoration: none;
+}
+
+/*여기서부터 bottom_right_box*/
+.bottom_right_box {
+  width: 160px;
+  height: 50px;
+  border: solid 2px #bae3b3;
+  border-radius: 10px;
+  background-color: #bae3b3;
+  margin-top: 50px;
+  margin-left: 30px; /*오른쪽에서 left로 margin*/
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom_right_box_text {
+  font-size: 15px;
+  color: black;
+  font-weight: bold;
+}
+
+.bottom_right_box_text a {
+  color: black;
+  text-decoration: none;
+}
+
+.bottom_right_box_text a:visited {
+  color: black;
+}
+
+.bottom_right_box_text a:hover {
+  color: black;
+}
+
+.bottom_right_box_text a:active {
+  color: black;
+}
