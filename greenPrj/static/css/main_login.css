@@ -137,8 +137,6 @@
   margin-left: 100px;
   margin-bottom: 50px;
 
-  text-decoration: underline;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -187,9 +185,6 @@
   color: black;
 }
   */
-.main_middle_1_text_right {
-  text-decoration: underline;
-}
 
 /*items 시작*/
 .main_middle_1_items_all {
