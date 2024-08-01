@@ -1,0 +1,59 @@
+section {
+  width: 100vw;
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section h4 {
+  margin: 4px 0;
+
+  font-weight: 900;
+  font-size: 45px;
+}
+section h4 span {
+  color: #5a976b;
+}
+section p.confirm {
+  margin: 36px 0;
+
+  font-weight: 500;
+  font-size: 36px;
+}
+section p.done {
+  margin: 48px 0 12px 0;
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 50px;
+
+  text-align: center;
+}
+section p.done span {
+  font-weight: 900;
+}
+
+section button.yes {
+  margin: 32px 12px;
+  padding: 12px 32px;
+
+  font-weight: 900;
+  font-size: 25px;
+
+  border: 2.5px solid #bae3b3;
+  border-radius: 10px;
+  background-color: #bae3b3;
+}
+section button.no {
+  margin: 32px 12px;
+  padding: 12px 32px;
+
+  font-weight: 500;
+  font-size: 25px;
+
+  border: 2.5px solid #bae3b3;
+  border-radius: 10px;
+  background-color: transparent;
+}

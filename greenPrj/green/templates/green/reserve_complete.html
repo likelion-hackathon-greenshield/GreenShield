@@ -1,14 +1,29 @@
+<!-- reserve_complete.html -->
+{% load static %} {% include 'green/header.html' %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GreenShield</title>
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/reservationConfirmDone.css' %}"
+    />
   </head>
   <body>
-    <h2>전화 상담/예약이 성공적으로 완료되었습니다!</h2>
-    <p>예약 날짜: {{ reservation.date }} {{ reservation.time }}</p>
-    <p>전문가: {{ expert.name }}</p>
-    <a href="{% url 'green:mypage' %}">마이페이지로 이동</a>
+    <section>
+      <h4><span>예약이 성공적으로 완료되었습니다!</span></h4>
+      <p class="done">
+        예약 날짜: {{ reservation.date }} {{ reservation.time }}
+        <br />
+        전문가: <span>{{ expert.name }}</span>
+      </p>
+      <a href="{% url 'green:mypage' %}">
+        <button type="button" class="no">마이페이지로 이동</button>
+      </a>
+    </section>
   </body>
 </html>
