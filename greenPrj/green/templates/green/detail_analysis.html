@@ -48,7 +48,7 @@
               <li class="bar-none"></li>
             </ul>
             <ul class="bar1">
-              {% for third_answer in third_answers %}
+              {% for third_answer in third_answers reversed %}
               <li
                 class="bar"
                 data-score="{{ third_answer.score }}"
@@ -99,7 +99,7 @@
               <li class="bar-none"></li>
             </ul>
             <ul class="bar1">
-              {% for second_answer in second_answers %}
+              {% for second_answer in second_answers reversed %}
               <li
                 class="bar"
                 data-score="{{ second_answer.score }}"
@@ -150,7 +150,7 @@
               <li class="bar-none"></li>
             </ul>
             <ul class="bar1">
-              {% for latest_answer in latest_answers %}
+              {% for latest_answer in latest_answers reversed %}
               <li
                 class="bar"
                 data-score="{{ latest_answer.score }}"
