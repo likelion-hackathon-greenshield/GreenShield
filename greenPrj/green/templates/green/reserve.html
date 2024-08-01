@@ -33,18 +33,21 @@
           </div>
         </section>
         <section class="reservation-time">
+          <!-- 예약 날짜 선택 -->
+          <input type="date" id="date" name="date" required />
           <div class="calendar">
             <div class="month-title">
-              <h4 class="month">August 2024</h4>
+              <!-- August 2024 -->
+              <h4 class="month" id="month-title"></h4>
               <div>
-                <button class="icon-arrow">
+                <button type="button" class="icon-arrow" id="prev-month">
                   <img
                     src="{% static 'img/iconReservationArrowLeft_16x16.png' %}"
                     alt="img"
                     class="icon-arrow"
                   />
                 </button>
-                <button class="icon-arrow">
+                <button type="button" class="icon-arrow" id="next-month">
                   <img
                     src="{% static 'img/iconReservationArrowRight_16x16.png' %}"
                     alt="img"
@@ -63,7 +66,8 @@
                 <th>Fri</th>
                 <th>Sat</th>
               </thead>
-              <tbody>
+              <tbody id="calendar-body">
+                <!-- 날짜가 동적으로 생성될 부분 -->
                 <tr>
                   <td></td>
                   <td></td>
@@ -112,11 +116,39 @@
               </tbody>
             </table>
           </div>
-          <!-- 예약 날짜 선택 -->
-          <label for="date"></label>
-          <input type="date" id="date" name="date" required />
+
           <!-- 예약 시간 선택 -->
-          <label for="time"></label>
+          <div class="time-list">
+            <button type="button" value="08:00" data-time="08:00" class="time">
+              08:00 AM
+            </button>
+            <button type="button" value="09:00" data-time="09:00" class="time">
+              09:00 AM
+            </button>
+            <button type="button" value="10:00" data-time="10:00" class="time">
+              10:00 AM
+            </button>
+            <button type="button" value="11:00" data-time="11:00" class="time">
+              11:00 AM
+            </button>
+            <button type="button" value="12:00" data-time="12:00" class="time">
+              12:00 PM
+            </button>
+            <button type="button" value="13:00" data-time="13:00" class="time">
+              01:00 PM
+            </button>
+            <button type="button" value="14:00" data-time="14:00" class="time">
+              02:00 PM
+            </button>
+            <button type="button" value="15:00" data-time="15:00" class="time">
+              03:00 PM
+            </button>
+            <button type="button" value="16:00" data-time="16:00" class="time">
+              04:00 PM
+            </button>
+          </div>
+          <input type="hidden" id="time" name="time" required />
+          <!-- <label for="time"></label>
           <select id="time" name="time" required>
             <option value="08:00">08:00 AM</option>
             <option value="09:00">09:00 AM</option>
@@ -127,20 +159,10 @@
             <option value="14:00">02:00 PM</option>
             <option value="15:00">03:00 PM</option>
             <option value="16:00">04:00 PM</option>
-          </select>
-          <!-- <div class="time-list">
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-          <button class="time">08:00 AM</button>
-        </div> -->
+          </select> -->
         </section>
       </section>
     </form>
+    <script src="{% static 'js/calendar.js' %}"></script>
   </body>
 </html>
