@@ -1,3 +1,8 @@
+/* a.a-black */
+a {
+  text-decoration: none;
+  color: black;
+}
 section {
   margin: 124px 0 150px 0;
   padding: 0 120px;
@@ -134,7 +139,7 @@ div.circle-right {
   border-radius: 50%;
   background-color: white;
 }
-form.todo-list {
+ul.todo-list {
   box-sizing: border-box;
   padding: 68px 48px 48px 48px;
   width: 780px;
@@ -148,7 +153,7 @@ form.todo-list {
   background-color: #e4f6e0;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
-div.list {
+ul.todo-list li.list {
   margin: 24px 0;
 
   display: flex;
@@ -176,10 +181,6 @@ img.list-checkbox {
   margin: 0;
   width: 36px;
   height: 36px;
-  opacity: 0;
-}
-input.list-checkbox:checked + label img.list-checkbox {
-  opacity: 1;
 }
 label.list-content {
   margin: 4px 0 0 12px;
@@ -193,7 +194,7 @@ label.list-content {
   font-size: 24px;
 }
 /* 제출 버튼 */
-button.submit {
+button.todo-list {
   width: 480px;
   height: 72px;
   margin: 32px 0 64px 0;

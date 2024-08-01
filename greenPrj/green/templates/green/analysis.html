@@ -1,28 +1,109 @@
-<body>
-  <h2>Green Shield</h2>
-  {{ user.username }}
-  <a href="{% url 'green:mypage' %}">마이페이지</a>
-  <a href="{% url 'logout' %}">로그아웃</a>
-  <br />
-  <hr />
-  <br />
-  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-  <a href="{% url 'green:community' %}">커뮤니티</a>
-  <a href="{% url 'green:market' %}">상품 추천</a>
-  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-  <br />
-  <br />
-  <hr />
-  <h1>해야 할 일 리스트</h1>
-  <ul>
-      {% for to_do in to_do_list %}
-          <li>{{ to_do }}</li>
-      {% endfor %}
-  </ul>
-  <h1>평가 분석</h1>
-      {% for answer in answers %}
-          {{ answer.score }}<br>
-      {% endfor %}
-  <a href="{% url 'green:detail-analysis' %}">Details</a>
-</body>
+<!-- analysis.html -->
+{% load static %} {% include 'green/header.html' %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/analysis.css' %}" />
+  </head>
+
+  <body>
+    <!-- 설문조사 결과 페이지 - 구독 -->
+    <section>
+      <div class="container">
+        <!-- 투두리스트 -->
+        <!-- 투두리스트 -->
+        <section class="todo-list">
+          <a href="{% url 'green:list' %}" class="a-black">
+            <h1 class="page-name">맞춤형 계획표 채우러가기 →</h1>
+          </a>
+          <div class="clip"></div>
+          <div class="circle-left"></div>
+          <div class="circle-right"></div>
+          <form method="POST">
+            <ul class="todo-list">
+              {% for to_do in to_do_list %}
+              <!-- id는 for와 같게 -->
+              <li class="list">
+                <!-- <input id="list1" class="list-checkbox" type="checkbox" /> -->
+                <label for="list1" class="list-checkbox">
+                  <img
+                    class="list-checkbox"
+                    src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}"
+                  />
+                </label>
+                <label for="list1" class="list-content"> {{ to_do }} </label>
+              </li>
+              {% endfor %}
+            </ul>
+          </form>
+        </section>
+
+        <!-- 평가 분석 그래프 -->
+        <!-- 평가 분석 그래프 -->
+        <!-- 평가 분석 그래프 -->
+        <section class="chart">
+          <!-- 막대 그래프 -->
+          <div class="chart">
+            <h4 class="chart-name">평가 분석</h4>
+            <ul class="bar1-y-axis">
+              <li>
+                <p class="chart-score">5점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">3점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">1점</p>
+                <div class="line"></div>
+              </li>
+            </ul>
+            <ul class="bar1-x-axis">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li class="bar-none"></li>
+            </ul>
+            <ul class="bar1">
+              {% for answer in answers %}
+              <li
+                class="bar"
+                data-score="{{ answer.score }}"
+                style="
+                    background-color: 
+                    {% if answer.score == 1 or answer.score == 2 %}
+                        #e5ede4
+                    {% elif answer.score == 3 or answer.score == 4 %}
+                        #bae3b3
+                    {% elif answer.score == 5 %}
+                        #5a976b
+                    {% endif %}
+                "
+              ></li>
+              {% endfor %}
+              <li class="bar-none"></li>
+            </ul>
+            <a href="{% url 'green:detail-analysis' %}">
+              <button class="chart">Details</button>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <script src="{% static 'js/analysis.js' %}"></script>
+  </body>
+</html>

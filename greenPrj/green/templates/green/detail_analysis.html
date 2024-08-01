@@ -1,29 +1,179 @@
-<body>
-  <h2>Green Shield</h2>
-  {{ user.username }}
-  <a href="{% url 'green:mypage' %}">마이페이지</a>
-  <a href="{% url 'logout' %}">로그아웃</a>
-  <br />
-  <hr />
-  <br />
-  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-  <a href="{% url 'green:community' %}">커뮤니티</a>
-  <a href="{% url 'green:market' %}">상품 추천</a>
-  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-  <br />
-  <br />
-  <hr />
-  <h1>최근 3회 평가 분석</h1>        
-      {% for latest_answer in latest_answers %}
-          {{ latest_answer.score }}<br>
-      {% endfor %}
-      <hr>
-      {% for second_answer in second_answers %}
-          {{ second_answer.score }}<br>
-      {% endfor %}
-      <hr>
-      {% for third_answer in third_answers %}
-          {{ third_answer.score }}<br>
-      {% endfor %}
-</body>
+<!-- detail_analysis.html -->
+{% load static %} {% include 'green/header.html' %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/detail_analysis.css' %}" />
+  </head>
+
+  <body>
+    <!-- 설문조사 결과 페이지 - 구독 -->
+    <section>
+      <div class="container">
+        <!-- 평가 분석 그래프 -->
+        <section class="chart">
+          <!-- 막대 그래프123 -->
+          <div class="chart z-index-3">
+            <h4 class="chart-name">최근 3회 평가 분석</h4>
+            <ul class="bar1-y-axis">
+              <li>
+                <p class="chart-score">5점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">3점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">1점</p>
+                <div class="line"></div>
+              </li>
+            </ul>
+            <ul class="bar1-x-axis">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li class="bar-none"></li>
+            </ul>
+            <ul class="bar1">
+              {% for third_answer in third_answers %}
+              <li
+                class="bar"
+                data-score="{{ third_answer.score }}"
+                style="
+                      background-color: 
+                      {% if third_answer.score == 1 or third_answer.score == 2 %}
+                          #e5ede4
+                      {% elif third_answer.score == 3 or third_answer.score == 4 %}
+                          #bae3b3
+                      {% elif third_answer.score == 5 %}
+                          #5a976b
+                      {% endif %}
+                  "
+              ></li>
+              {% endfor %}
+              <li class="bar-none"></li>
+            </ul>
+          </div>
+          <!-- 막대 그래프123 -->
+          <div class="chart z-index-2">
+            <!-- 최근 3회 평가 분석 -->
+            <h4 class="chart-name"></h4>
+            <ul class="bar1-y-axis">
+              <li>
+                <p class="chart-score">5점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">3점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">1점</p>
+                <div class="line"></div>
+              </li>
+            </ul>
+            <ul class="bar1-x-axis">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li class="bar-none"></li>
+            </ul>
+            <ul class="bar1">
+              {% for second_answer in second_answers %}
+              <li
+                class="bar"
+                data-score="{{ second_answer.score }}"
+                style="
+                    background-color: 
+                    {% if second_answer.score == 1 or second_answer.score == 2 %}
+                        #e5ede4
+                    {% elif second_answer.score == 3 or second_answer.score == 4 %}
+                        #bae3b3
+                    {% elif second_answer.score == 5 %}
+                        #5a976b
+                    {% endif %}
+                "
+              ></li>
+              {% endfor %}
+              <li class="bar-none"></li>
+            </ul>
+          </div>
+          <!-- 막대 그래프123 -->
+          <div class="chart z-index-1">
+            <!-- 최근 3회 평가 분석 -->
+            <h4 class="chart-name"></h4>
+            <ul class="bar1-y-axis">
+              <li>
+                <p class="chart-score">5점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">3점</p>
+                <div class="line"></div>
+              </li>
+              <li>
+                <p class="chart-score">1점</p>
+                <div class="line"></div>
+              </li>
+            </ul>
+            <ul class="bar1-x-axis">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li class="bar-none"></li>
+            </ul>
+            <ul class="bar1">
+              {% for latest_answer in latest_answers %}
+              <li
+                class="bar"
+                data-score="{{ latest_answer.score }}"
+                style="
+                    background-color: 
+                    {% if latest_answer.score == 1 or latest_answer.score == 2 %}
+                        #e5ede4
+                    {% elif latest_answer.score == 3 or latest_answer.score == 4 %}
+                        #bae3b3
+                    {% elif latest_answer.score == 5 %}
+                        #5a976b
+                    {% endif %}
+                "
+              ></li>
+              {% endfor %}
+
+              <li class="bar-none"></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <script src="{% static 'js/analysis.js' %}"></script>
+  </body>
+</html>

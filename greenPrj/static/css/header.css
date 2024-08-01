@@ -72,7 +72,7 @@ nav.top-bar div.nav-list a {
   text-decoration: none;
   color: black;
 }
-nav.top-bar a.selected {
+nav.top-bar div.nav-list a.selected {
   color: #5a976b;
 }
 

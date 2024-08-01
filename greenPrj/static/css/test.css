@@ -62,6 +62,9 @@ label.num {
 div.input-container input:checked + label.num {
   background-color: #bae3b3;
 }
+div.input-container label.num.checked {
+  background-color: #bae3b3;
+}
 span.ko {
   font-weight: 500;
   font-size: 18px;

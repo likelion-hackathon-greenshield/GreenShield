@@ -1,27 +1,96 @@
-<body>
-  <h2>Green Shield</h2>
-  {{ user.username }}
-  <a href="{% url 'green:mypage' %}">마이페이지</a>
-  <a href="{% url 'logout' %}">로그아웃</a>
-  <br />
-  <hr />
-  <br />
-  <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-  <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-  <a href="{% url 'green:community' %}">커뮤니티</a>
-  <a href="{% url 'green:market' %}">상품 추천</a>
-  <a href="{% url 'green:expert' %}">상담 예약 서비스</a>
-  <br />
-  <br />
-  <hr />
-  <h1>설문 재확인 페이지</h1>
-  <form method="POST">
-      {% csrf_token %}
-      {% for item in result %}
-          <p>{{ item.question }}</p>
-          <p>{{ item.score }}</p>
-          <p>팁: {{ item.tip }}</p>
-          <hr/>
-      {% endfor %}
-  </form>
-</body>
+<!-- detail_result.html -->
+{% load static %} {% include 'green/header.html' %}
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" />
+  </head>
+
+  <body>
+    <!-- 설문조사 재확인 및 Tip 페이지 -->
+    <section>
+      <form method="POST">
+        {% csrf_token %} {% for item in result reversed %}
+        <!-- 문항 하나 -->
+        <div class="question-item">
+          <p class="question">{{ item.question }}</p>
+          <div class="question-score-list">
+            <!-- 12345번 -->
+            <div class="input-container">
+              <label
+                {% if item.score == 1 %}
+                class="num checked"
+                {% else %}
+                class="num"
+                {% endif %}
+              >
+                1
+              </label>
+              <span class="ko">전혀 아니다</span>
+            </div>
+            <!-- 12345번 -->
+            <div class="input-container">
+              <label
+                {% if item.score == 2 %}
+                class="num checked"
+                {% else %}
+                class="num"
+                {% endif %}
+              >
+                2
+              </label>
+              <span class="ko">아니다</span>
+            </div>
+            <!-- 12345번 -->
+            <div class="input-container">
+              <label
+                {% if item.score == 3 %}
+                class="num checked"
+                {% else %}
+                class="num"
+                {% endif %}
+              >
+                3
+              </label>
+              <span class="ko">보통이다</span>
+            </div>
+            <!-- 12345번 -->
+            <div class="input-container">
+              <label
+                {% if item.score == 4 %}
+                class="num checked"
+                {% else %}
+                class="num"
+                {% endif %}
+              >
+                4
+              </label>
+              <span class="ko">그렇다</span>
+            </div>
+            <!-- 12345번 -->
+            <div class="input-container">
+              <label
+                {% if item.score == 5 %}
+                class="num checked"
+                {% else %}
+                class="num"
+                {% endif %}
+              >
+                5
+              </label>
+              <span class="ko">매우 그렇다</span>
+            </div>
+          </div>
+
+          <p class="tip">tip {{ item.tip }}</p>
+        </div>
+        {% endfor %}
+      </form>
+    </section>
+  </body>
+</html>
