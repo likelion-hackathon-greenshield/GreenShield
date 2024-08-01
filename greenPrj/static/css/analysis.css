@@ -1,0 +1,281 @@
+a.a-black {
+  text-decoration: none;
+  color: black;
+}
+section div.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 124px 0 150px 0;
+  padding: 0 120px;
+}
+section.todo-list {
+  margin: 0 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+section.chart {
+  margin: 0 48px;
+}
+/* 투두리스트 */
+h1.page-name {
+  margin: 0 0 36px 0;
+
+  display: flex;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: 32px;
+}
+div.clip {
+  width: 530px;
+  height: 52px;
+  position: relative;
+  z-index: 1;
+
+  border-radius: 16px;
+  background-color: #5a976b;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+div.circle-left {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  /* left: 28px; */
+  right: 234px;
+  bottom: 32px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+div.circle-right {
+  width: 12px;
+  height: 12px;
+
+  position: relative;
+  /* left: 490px; */
+  left: 234px;
+  bottom: 44px;
+  z-index: 1;
+
+  border-radius: 50%;
+  background-color: white;
+}
+ul.todo-list {
+  box-sizing: border-box;
+  padding: 68px 48px 48px 48px;
+  width: 530px;
+  /* height: 678px; */
+
+  position: relative;
+  bottom: 54px;
+  z-index: 0;
+
+  border-radius: 16px;
+  background-color: #e4f6e0;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+li.list {
+  margin: 24px 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+input.list-checkbox {
+  /* width: 36px;
+    height: 36px;
+    vertical-align: top; */
+  opacity: 0;
+}
+label.list-checkbox {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+  vertical-align: top;
+
+  border: 2px solid #dadada;
+  border-radius: 5px;
+  background-color: white;
+}
+img.list-checkbox {
+  margin: 0;
+  width: 36px;
+  height: 36px;
+  opacity: 1;
+}
+label.list-content {
+  margin: 4px 0 0 12px;
+
+  display: inline-block;
+  width: 380px;
+  word-wrap: break-word;
+  white-space: normal;
+
+  font-weight: 500px;
+  font-size: 24px;
+}
+/* 제출 버튼 */
+button.todo-submit {
+  width: 400px;
+  height: 80px;
+  margin: 12px 0 64px 0;
+
+  font-weight: 900;
+  font-size: 30px;
+  color: white;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #5a976b;
+}
+/* 분석 결과 그래프 */
+div.chart {
+  margin: 52px 0px;
+  padding: 16px;
+  width: 680px;
+  height: 782px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 12px 34px -10px rgba(58, 77, 233, 0.15);
+}
+h4.chart-name {
+  margin: 4px 0 80px 0;
+
+  width: 620px;
+
+  font-weight: 900;
+  font-size: 40px;
+  text-align: left;
+}
+ul.bar1-y-axis {
+  margin: 0 0 8px 0;
+  padding: 0;
+  width: 620px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+ul.bar1-y-axis li {
+  margin: 50px 0;
+  height: 28px;
+  list-style-type: none;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+p.chart-score {
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+div.line {
+  margin-left: 18px;
+  padding: 0.5px;
+  width: 528px;
+  height: 0;
+
+  border-top: 1px dashed #00000033;
+  border-image: repeating-linear-gradient(
+      90deg,
+      #00000033,
+      #00000033 7px,
+      transparent 7px,
+      transparent 12px
+    )
+    1;
+}
+ul.bar1-x-axis {
+  margin: -30px 0 0 64px;
+  padding: 0;
+  width: 440px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ul.bar1-x-axis li {
+  width: 32px;
+
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 28px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+ul.bar1-x-axis li.bar-none {
+  width: 0;
+
+  list-style-type: none;
+  font-weight: 500;
+  font-size: 28px;
+  text-align: center;
+
+  opacity: 0;
+}
+ul.bar1 {
+  margin: -330px 0 80px 64px;
+  padding: 0;
+  width: 440px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+ul.bar1 li {
+  list-style-type: none;
+
+  margin: 0 9.5px;
+  width: 13px;
+  height: 92px;
+
+  border-radius: 30px;
+  background-color: #e9ecf1;
+}
+ul.bar1 li.bar-none {
+  list-style-type: none;
+
+  margin: 0;
+  width: 0px;
+
+  border-radius: 30px;
+  background-color: #e9ecf1;
+
+  height: 256px;
+  opacity: 0;
+}
+p.chart-date {
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
+button.chart {
+  margin: 80px 0 0 0;
+  width: 400px;
+  height: 80px;
+
+  font-weight: 900;
+  font-size: 28px;
+
+  border: none;
+  border-radius: 10px;
+  background-color: #bae3b3;
+}
