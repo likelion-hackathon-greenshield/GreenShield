@@ -13,13 +13,9 @@
         <a href="{% url 'green:mypage' %}">{{ user.username }}</a>
       </p>
       <div>
-        <img
-          src="{% static 'img/anonymousProfile_header_60x60.png' %}"
-          alt="img"
-          class="img-AnonymousProfile"
-        />
+        <img src="{% static 'img/anonymousProfile_header_60x60.png' %}" alt="img" class="img-AnonymousProfile" />
       </div>
-      <p class="logout"><a href="{% url 'logout' %}">로그아웃</a></p>
+      <p class="logout"><a href="#" id="logoutLink">로그아웃</a></p>
     </header>
     <!-- 네비게이션 바 -->
     <nav class="top-bar">
@@ -32,9 +28,7 @@
         </div>
         <div class="nav-list">
           <!-- selected js 추가 필요 -->
-          <a href="{% url 'green:test' %}" class="selected"
-            >환경 호르몬 노출 평가</a
-          >
+          <a href="{% url 'green:test' %}" class="selected">환경 호르몬 노출 평가</a>
           <a href="{% url 'green:list' %}">맞춤형 플래너</a>
           <a href="{% url 'green:community' %}">커뮤니티</a>
           <a href="{% url 'green:market' %}">추천 상품</a>
@@ -42,5 +36,35 @@
         </div>
       </div>
     </nav>
+
+    <!-- 로그아웃 확인 모달 -->
+    <div id="logoutModal" class="modal">
+      <div class="modal-content">
+        <p>로그아웃하시겠습니까?</p>
+        <button id="confirmLogout">예</button>
+        <button id="cancelLogout">아니요</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("logoutLink").addEventListener("click", function (event) {
+        event.preventDefault();
+        document.getElementById("logoutModal").style.display = "block";
+      });
+
+      document.getElementById("confirmLogout").addEventListener("click", function () {
+        window.location.href = "{% url 'logout' %}";
+      });
+
+      document.getElementById("cancelLogout").addEventListener("click", function () {
+        document.getElementById("logoutModal").style.display = "none";
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target == document.getElementById("logoutModal")) {
+          document.getElementById("logoutModal").style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,144 @@
+/* 기존 CSS */
+.logout_text {
+  font-size: 20px;
+  font-weight: bold;
+}
+.logout {
+  margin-left: 50px;
+}
+
+.title_all {
+  margin-left: 100px;
+  margin-top: 80px;
+}
+
+.top_wri_and_back {
+  display: flex;
+  flex-direction: row;
+}
+
+.written_article_text {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.written_article {
+  margin-right: 8px;
+}
+
+.back_mypage_box {
+  width: 240px;
+  height: 50px;
+  border: solid 2px #bae3b3;
+  border-radius: 15px;
+  background-color: #bae3b3;
+
+  margin-left: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_mypage_text {
+  font-size: 18px;
+  color: black;
+}
+
+.back_mypage_text a {
+  color: black;
+  text-decoration: none;
+}
+
+.back_mypage_text a:visited {
+  color: black;
+}
+
+.back_mypage_text a:hover {
+  color: black;
+}
+
+.back_mypage_text a:active {
+  color: black;
+}
+
+/* 여기까지 다른 페이지랑 동일 */
+
+.date_box {
+  width: 400px;
+  height: 70px;
+  border: solid 2px #bae3b3;
+  border-radius: 10px;
+  background-color: #bae3b3;
+
+  margin-bottom: 30px; /*위 박스에 margin bottom */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date_text {
+  font-size: 25px;
+  color: #5a976b;
+  font-weight: bold;
+}
+
+.expert_box {
+  width: 400px;
+  height: 70px;
+  border: solid 2px #bae3b3;
+  border-radius: 10px;
+  background-color: #bae3b3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expert_text {
+  font-size: 25px;
+  color: #5a976b;
+  font-weight: bold;
+}
+
+.box_all {
+  display: flex;
+  flex-direction: column;
+}
+
+.reservations_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  margin-top: 100px;
+}
+
+.reservation_1 {
+  /* width: 45%; */ /* 두 열로 나누기 위해 너비를 45%로 설정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.pic_and_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.no_posts_message_box {
+  display: flex;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
+.no_posts_message {
+  font-size: 27px;
+  color: #3d3d3d;
+}

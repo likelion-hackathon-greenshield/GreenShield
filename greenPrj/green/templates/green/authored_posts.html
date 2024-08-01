@@ -2,39 +2,69 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>내가 작성한 글</title>
+    <!-- reset css입니다. 우선순위 문제로 개별 페이지 css는 아래쪽에 배치해주세요.(아래쪽이 더 높은 우선순위) -->
+    <link rel="stylesheet" href="{% static './css/resetCSS.css' %} " />
+    <link rel="stylesheet" href="{% static './css/header.css' %} " />
+    <link rel="stylesheet" href="{% static './css/written_article.css' %}" />
   </head>
+
   <body>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <h2>작성한 글</h2>
-    <ul>
-      {% for post in posts %}
-      <li>
-        <a href="{% url 'green:community_detail' post.id %}">
-          <p>{{ post.author }}</p>
-          <p>{{ post.created_at }}</p>
-          <p>{{ post.content }}</p>
-          {% if post.image %}
-          <img src="{{ post.image.url }}" width="300" />
-          {% endif %} {% if post.video %}
-          <video
-            src="{{ post.video.url }}"
-            type="video/mp4"
-            width="300"
-            controls
-          ></video>
-          {% endif %}
-        </a>
-      </li>
-      {% empty %}
-      <p>작성한 글이 없습니다.</p>
-      {% endfor %}
-    </ul>
-    <hr />
-    <a href="{% url 'green:mypage' %}">마이페이지로 돌아가기</a>
+    {% include 'green/header.html' %}
+
+    <!--written_article page 시작-->
+    <div class="title_all">
+      <div class="top_wri_and_back">
+        <div class="written_article">
+          <div class="written_article_text">내가 작성한 글</div>
+        </div>
+
+        <div class="back_mypage_box">
+          <div class="back_mypage_text"><a href="{% url 'green:mypage' %}">마이페이지로 돌아가기</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article_all">
+      {% if posts %} {% for post in posts %}
+      <a href="{% url 'green:community_detail' post.id %}">
+        <div class="article_set1">
+          <div class="article_pro_box">
+            <div class="article_profile">
+              <img src="{% static './img/AnonymousProfile_60x60.png' %}" width="80" height="80" />
+            </div>
+
+            <div class="article_box">
+              <div class="name">{{ post.author }}</div>
+              <div class="date">{{ post.created_at }}</div>
+              <div class="text">{{ post.content }}</div>
+              <div class="article_post_picture">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" width="400" height="180" />
+                {% endif %} {% if post.video %}
+                <video src="{{ post.video.url }}" type="video/mp4" width="400" height="180" controls></video>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endfor %} {% else %}
+      <div class="no_posts_message_box">
+        <div class="no_posts_message">작성한 글이 없습니다.</div>
+      </div>
+
+      {% endif %}
+    </div>
+    <!--
+          <div class="bottom_all">
+        <div class="bottom_1_and_2">
+          <div class="bottom_1">수정</div>
+          <div class="bottom_2">삭제</div>
+        </div>
+      </div>
+    -->
   </body>
 </html>

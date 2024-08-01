@@ -2,25 +2,67 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>마이페이지</title>
+    <!-- reset css입니다. 우선순위 문제로 개별 페이지 css는 아래쪽에 배치해주세요.(아래쪽이 더 높은 우선순위) -->
+    <link rel="stylesheet" href="{% static './css/resetCSS.css' %}" />
+    <link rel="stylesheet" href="{% static './css/header.css' %}" />
+    <link rel="stylesheet" href="{% static './css/mypage.css' %}" />
   </head>
+
   <body>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <h2>마이페이지</h2>
-    <p>본명: {{ full_name }}</p>
-    <p>아이디: {{ username }}</p>
-    <p>이메일: {{ email }}</p>
-    <p>가입일: {{ date_joined }}</p>
-    <p>마지막 로그인: {{ last_login }}</p>
-    <hr />
-    <a href="{% url 'green:liked_posts' %}">내가 좋아요한 글</a>
-    <a href="{% url 'green:authored_posts' %}">내가 작성한 글</a>
-    <a href="{% url 'green:reservation_list' %}">나의 예약 내역</a>
-    <hr />
-    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+    {% include 'green/header.html' %}
+
+    <!--mypage 시작-->
+    <div class="body_all">
+      <div class="middle_box_left_and_right">
+        <div class="middle_box_left">
+          <div class="middle_box_left_pic">
+            <img src="{% static './img/AnonymousProfile_60x60.png' %}" width="150" height="150" />
+          </div>
+
+          <div class="middle_box_left_backhome_box">
+            <div class="middle_box_left_backhome_text"><a href="{% url 'green:main' %}">홈으로</a></div>
+          </div>
+        </div>
+
+        <div class="middle_box_right">
+          <div class="middle_box_right_name_and_money">
+            <div class="middle_box_right_name">{{ username }} 님</div>
+
+            <!--<div class="middle_box_right_money">유료 회원</div>-->
+          </div>
+
+          <div class="information">
+            <div class="name">본명: {{ full_name }}</div>
+            <div class="id">아이디: {{ username }}</div>
+            <div class="email">이메일: {{ email }}</div>
+            <div class="number">가입일: {{ date_joined }}</div>
+            <div class="last_login">마지막 로그인: {{ last_login }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom_box_123">
+        <div class="bottom_box1">
+          <div class="bottom_box1_text">
+            <a href="{% url 'green:liked_posts' %}">내가 좋아요한 글</a>
+          </div>
+        </div>
+
+        <div class="bottom_box2">
+          <div class="bottom_box2_text">
+            <a href="{% url 'green:authored_posts' %}">내가 작성한 글</a>
+          </div>
+        </div>
+
+        <div class="bottom_box3">
+          <div class="bottom_box3_text">
+            <a href="{% url 'green:reservation_list' %}">나의 예약 내역</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

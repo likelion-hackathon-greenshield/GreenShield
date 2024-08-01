@@ -1,16 +1,71 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/delete_ask.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>삭제하기</title>
   </head>
   <body>
-    <h2>정말로 글을 삭제하시겠습니까?</h2>
-    <form method="post" action="{% url 'green:community_delete' post.id %}">
-      {% csrf_token %}
-      <button type="submit">삭제</button>
-      <a href="{% url 'green:community' %}">취소</a>
-    </form>
+    <div id="content">
+      <div class="delete_all">
+        <div class="delete_ask_1">게시물을 삭제할까요?</div>
+        <div class="delete_ask_2">삭제된 게시물은 복구할 수 없습니다.</div>
+        <div class="delete_box_all">
+          <form id="deleteForm" method="post" action="{% url 'green:community_delete' post.id %}">
+            {% csrf_token %}
+            <div class="delete_box1">
+              <div class="delete_box1_text">
+                <button type="submit" class="delete_button">삭제</button>
+              </div>
+            </div>
+            <div class="delete_box2">
+              <div class="delete_box2_text">
+                <a href="{% url 'green:community' %}">취소</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("deleteForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // 기본 제출 방지
+
+        var xhr = new XMLHttpRequest();
+        var form = this;
+        var url = form.action;
+        var csrftoken = document.querySelector("[name=csrfmiddlewaretoken]").value;
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 400) {
+            // 성공적으로 삭제된 경우
+            document.getElementById("content").innerHTML = `
+                        <div class="delete_done_all">
+                            <div class="delete_done1">
+                                게시물이 삭제되었습니다.
+                            </div>
+                            <div class="delete_done2">
+                                삭제된 게시물은 복구할 수 없습니다.
+                            </div>
+                            <div class="delete_done3">
+                                <a href="{% url 'green:authored_posts' %}">내가 작성한 글 이동</a>
+                            </div>
+                        </div>
+                    `;
+          } else {
+            // 오류 처리
+            alert("게시물 삭제에 실패했습니다.");
+          }
+        };
+
+        xhr.send(new URLSearchParams(new FormData(form)).toString());
+      });
+    </script>
   </body>
 </html>
