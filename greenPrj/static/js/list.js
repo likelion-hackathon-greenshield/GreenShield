@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (count === 0) {
             // count가 0인 경우
             barElements[index].style.height = "100px";
-            barElements[index].style.backgroundColor = "#e0e0e0"; // 예를 들어 연한 회색으로 설정
+            barElements[index].style.backgroundColor = "#F1F1F1"; // 예를 들어 연한 회색으로 설정
           } else if (index < today) {
             // 오늘 이전의 요일
             barElements[index].style.height = count * 20 + "px";

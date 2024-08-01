@@ -8,12 +8,13 @@ section h1.page-name {
   justify-content: center;
 }
 div.container {
+  margin: 0 48px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 section.todo-list {
-  margin: 0 48px;
+  margin: 84px 48px;
 
   display: flex;
   flex-direction: column;
