@@ -1,48 +1,146 @@
+<!-- reserve.html -->
+{% load static %} {% include 'green/header.html' %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GreenShield</title>
+
+    <link rel="stylesheet" href="{% static 'css/reserve.css' %}" />
   </head>
   <body>
-    <h2>Green Shield</h2>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <br />
-    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-    <a href="{% url 'green:community' %}">커뮤니티</a>
-    <a href="{% url 'green:market' %}">추천 상품</a>
-    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
-    <hr />
+    <!-- 전문가 예약 상세 페이지 (reservation detail page) -->
     <form method="post" action="{% url 'green:reserve' expert.id %}">
       {% csrf_token %}
-      <img src="{{ expert.photo.url }}" alt="{{ expert.name }}" width="400" />
-      <p>{{ expert.name }}</p>
-      <p>{{ expert.location }}</p>
-      <p>{{ expert.description }}</p>
-      <label for="date"></label>
-      <input type="date" id="date" name="date" required />
-      <label for="time"></label>
-      <select id="time" name="time" required>
-        <option value="08:00">08:00 AM</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-      </select>
-      <p>
-        <button type="submit">예약</button>
-        <a href="{% url 'green:expert' %}">취소</a>
-      </p>
+      <section class="container">
+        <section class="expert-info">
+          <div class="img-back_reservation_expert">
+            <img
+              src="{{ expert.photo.url }}"
+              alt="{{ expert.name }}"
+              class="img-back_reservation_expert"
+            />
+          </div>
+          <div>
+            <div class="expert-title">
+              <h4 class="name">{{ expert.name }}</h4>
+              <button type="submit">예약하기</button>
+            </div>
+            <p class="location">{{ expert.location }}</p>
+            <p class="introduce">{{ expert.description }}</p>
+          </div>
+        </section>
+        <section class="reservation-time">
+          <div class="calendar">
+            <div class="month-title">
+              <h4 class="month">August 2024</h4>
+              <div>
+                <button class="icon-arrow">
+                  <img
+                    src="{% static 'img/iconReservationArrowLeft_16x16.png' %}"
+                    alt="img"
+                    class="icon-arrow"
+                  />
+                </button>
+                <button class="icon-arrow">
+                  <img
+                    src="{% static 'img/iconReservationArrowRight_16x16.png' %}"
+                    alt="img"
+                    class="icon-arrow"
+                  />
+                </button>
+              </div>
+            </div>
+            <table class="month-contents">
+              <thead>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                </tr>
+                <tr>
+                  <td>18</td>
+                  <td>19</td>
+                  <td>20</td>
+                  <td>21</td>
+                  <td>22</td>
+                  <td>23</td>
+                  <td>24</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td>26</td>
+                  <td>27</td>
+                  <td>28</td>
+                  <td>29</td>
+                  <td>30</td>
+                  <td>31</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 예약 날짜 선택 -->
+          <label for="date"></label>
+          <input type="date" id="date" name="date" required />
+          <!-- 예약 시간 선택 -->
+          <label for="time"></label>
+          <select id="time" name="time" required>
+            <option value="08:00">08:00 AM</option>
+            <option value="09:00">09:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">01:00 PM</option>
+            <option value="14:00">02:00 PM</option>
+            <option value="15:00">03:00 PM</option>
+            <option value="16:00">04:00 PM</option>
+          </select>
+          <!-- <div class="time-list">
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+          <button class="time">08:00 AM</button>
+        </div> -->
+        </section>
+      </section>
     </form>
-    <hr />
   </body>
 </html>
