@@ -64,6 +64,8 @@
         <!-- 분석 결과 그래프 -->
         <section class="chart">
           <!-- 막대 그래프 -->
+          <!-- 막대 그래프 -->
+          <!-- 막대 그래프 -->
           <div class="chart">
             <h4 class="chart-name">Weekly Overview</h4>
             <p class="chart-date">Aug 1 - Aug 7</p>
@@ -101,6 +103,62 @@
               </div>
             </div>
           </div>
+
+          <!-- 곡선 그래프 -->
+          <!-- 곡선 그래프 -->
+          <!-- 곡선 그래프 -->
+          <div class="chart">
+            <div class="chart-margin">
+              <h4 class="chart-name">Weekly Overview</h4>
+              <p class="chart-date">2024</p>
+              <ul class="bar2">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+              <ul class="bar2-x-axis">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <!-- <li>Mar</li>
+                <li>May</li>
+                <li>Jul</li>
+                <li style="color: #5a976b">Aug</li> -->
+              </ul>
+              <!-- round된 곡선 끝 보이도록 5정도 여유분 두기 -->
+              <div class="bar2-line">
+                <svg class="bar2-line" viewBox="0 0 300 100">
+                  <!-- x값 - 90씩, 30씩 -->
+                  <path
+                    class="bar2-line"
+                    fill="none"
+                    stroke="#5A976B"
+                    stroke-width="4"
+                    stroke-linecap="round"
+                    d=""
+                  />
+                  <!-- d="
+                       M 15 96
+                       C 45 96 75 42 105 42
+                       C 135 42 165 64 195 64
+                       C 225 64 255 12 285 12
+                     "
+
+                       d="
+                    M 15 
+                    C 45 75 105
+                    C 135 165 195
+                    C 225 255 285
+                    " -->
+                </svg>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </section>
@@ -117,16 +175,9 @@
         {% endfor %}
       </tbody>
     </table>
-    -->
 
     <h2>Monthly Overview</h2>
     <table>
-      <thead>
-        <tr>
-          <th>Month</th>
-          <th>Completion</th>
-        </tr>
-      </thead>
       <tbody>
         {% for month, count in completion_by_month.items %}
         <tr>
@@ -136,11 +187,21 @@
         {% endfor %}
       </tbody>
     </table>
+    -->
 
+    <!-- Django 템플릿 엔진을 사용하여 JavaScript 변수에 데이터 할당 -->
     <script>
-      // Django 템플릿 엔진을 사용하여 JavaScript 변수에 데이터 할당
       var completionData = {{ completion_by_day|safe }};
     </script>
     <script src="{% static 'js/list.js' %}"></script>
+    <script id="data" type="application/json">
+      {
+        {% for month, count in completion_by_month.items %}
+          "{{ month }}": {{ count }}{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      }
+    </script>
+
+    <script src="{% static 'js/list_curve.js' %}"></script>
   </body>
 </html>
