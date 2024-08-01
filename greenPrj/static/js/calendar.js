@@ -68,4 +68,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 초기 달력 로드
   updateCalendar(currentDate);
+
+  // 상담 시간 예약 버튼
+  // 상담 시간 예약 버튼
+  // 상담 시간 예약 버튼
+  const timeButtons = document.querySelectorAll(".time");
+  let selectedTimeButton = null; // 선택된 시간 버튼
+
+  // 시간 버튼 클릭 이벤트 추가
+  timeButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // 이전에 선택된 버튼의 스타일 초기화
+      if (selectedTimeButton) {
+        // selectedTimeButton.classList.remove("selected");
+        selectedTimeButton.style.backgroundColor = "";
+      }
+      // 선택된 버튼 스타일 적용
+      //   this.classList.add("selected");
+      //   selectedTimeButton = this;
+      this.style.backgroundColor = "#BAE3B3";
+      selectedTimeButton = this;
+
+      // input hidden 필드 값 업데이트
+      document.getElementById("time").value = this.getAttribute("data-time");
+    });
+  });
 });
