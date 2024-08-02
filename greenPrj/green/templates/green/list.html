@@ -30,30 +30,11 @@
               {% for question in to_do_list %}
               <!-- id는 for와 같게 -->
               <li class="list">
-                <input
-                  type="checkbox"
-                  name="to_do_{{ question.id }}"
-                  value="1"
-                  {%
-                  if
-                  completed_list|get_item:question.id
-                  %}
-                  checked
-                  {%
-                  endif
-                  %}
-                  class="list-checkbox"
-                  id="to_do_{{ question.id }}"
-                />
+                <input type="checkbox" name="to_do_{{ question.id }}" value="1" {% if completed_list|get_item:question.id %} checked {% endif %} class="list-checkbox" id="to_do_{{ question.id }}" />
                 <label for="to_do_{{ question.id }}" class="list-checkbox">
-                  <img
-                    class="list-checkbox"
-                    src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}"
-                  />
+                  <img class="list-checkbox" src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}" />
                 </label>
-                <label for="list1" class="list-content">
-                  {{ question.to_do }}
-                </label>
+                <label for="list1" class="list-content"> {{ question.to_do }} </label>
               </li>
               {% endfor %}
             </ul>
@@ -91,11 +72,7 @@
             <div class="line"></div>
             <div class="state">
               <div class="icon-smile">
-                <img
-                  class="icon-smile"
-                  src="{% static 'img/iconSmile_todoPlan_33x33.png' %}./"
-                  alt="img"
-                />
+                <img class="icon-smile" src="{% static 'img/iconSmile_todoPlan_33x33.png' %}./" alt="img" />
               </div>
               <div>
                 <h4 class="state">You're doing good!</h4>
@@ -134,14 +111,7 @@
               <div class="bar2-line">
                 <svg class="bar2-line" viewBox="0 0 300 100">
                   <!-- x값 - 90씩, 30씩 -->
-                  <path
-                    class="bar2-line"
-                    fill="none"
-                    stroke="#5A976B"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                    d=""
-                  />
+                  <path class="bar2-line" fill="none" stroke="#5A976B" stroke-width="4" stroke-linecap="round" d="" />
                   <!-- d="
                        M 15 96
                        C 45 96 75 42 105 42
@@ -194,6 +164,7 @@
       var completionData = {{ completion_by_day|safe }};
     </script>
     <script src="{% static 'js/list.js' %}"></script>
+
     <script id="data" type="application/json">
       {
         {% for month, count in completion_by_month.items %}
@@ -201,7 +172,6 @@
         {% endfor %}
       }
     </script>
-
     <script src="{% static 'js/list_curve.js' %}"></script>
   </body>
 </html>

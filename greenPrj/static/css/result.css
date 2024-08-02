@@ -14,12 +14,17 @@ section {
 }
 h1.page-name {
   margin: 0 0 60px 0;
+  padding: 16px 36px;
+  border-radius: 20px;
 
   display: flex;
   justify-content: center;
 
   font-weight: 500;
   font-size: 40px;
+}
+h1.page-name.a:hover {
+  background-color: #bae3b3;
 }
 /* 설문조사 결과 */
 div.result-container {
@@ -34,6 +39,9 @@ div.result-container {
 
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25),
     4px -2px 36px 0 rgba(0, 0, 0, 0.25);
+}
+div.result-container:hover {
+  background-color: #e4f6e0;
 }
 /* 설문조사 결과 - 닉네임 */
 div.profile {
@@ -194,10 +202,15 @@ label.list-content {
   font-size: 24px;
 }
 /* 제출 버튼 */
-button.todo-list {
+a.todo-list {
   width: 480px;
   height: 72px;
   margin: 32px 0 64px 0;
+}
+button.todo-list {
+  width: 480px;
+  height: 72px;
+  margin: 0;
 
   font-weight: 900;
   font-size: 30px;
@@ -206,4 +219,7 @@ button.todo-list {
   border: none;
   border-radius: 20px;
   background-color: #5a976b;
+}
+button.todo-list:hover {
+  background-color: #0056b3;
 }

@@ -22,7 +22,7 @@
       <form method="post" action="{% url 'green:reserve_complete' expert.id %}">
         {% csrf_token %}
         <div class="container">
-          <a href="{% url 'green:expert' %}">
+          <a href="{% url 'green:expert' %}" class="a-margin width-118">
             <button type="button" class="no">취소</button>
           </a>
           <button type="submit" class="yes">예약 확인</button>
