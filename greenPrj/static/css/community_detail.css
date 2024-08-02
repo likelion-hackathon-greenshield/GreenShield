@@ -1,48 +1,41 @@
 .community-container {
-  margin: 4em 10em;
+  width: 80%; 
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .posts {
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  max-width: 1000px;
 }
 
 .post-info-container {
   display: flex;
 }
 
-.post {
-  margin-bottom: 1em;
-  padding: 1em;
-}
-
 .post-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1em;
-}
-
-.profile-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 .post-info {
   display: flex;
   flex-direction: column;
-  margin-left: 1em;
 }
 
 .author {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 26px;
 }
 
 .post-time {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(103, 103, 103, 1);
 }
 
@@ -51,6 +44,7 @@
   text-align: left;
   margin: 1em auto;
   display: block;
+  font-size: 18px;
 }
 
 .post-image {
@@ -61,11 +55,16 @@
   border-radius: 10px;
 }
 
-/*추가*/
+/*異붽�*/
 .post-actions {
   margin-top: 0.5em;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.post-actions a{
+  text-decoration: none;
+  color: black;
 }
 
 .post-actions img {
@@ -95,18 +94,6 @@
   margin-top: 1em;
 }
 
-.comment-profile {
-  display: flex;
-  align-items: center;
-}
-
-.comment-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 1em;
-}
-
 .comment-info {
   display: flex;
   flex-direction: column;
@@ -123,4 +110,61 @@
 
 .comment-content {
   margin-top: 0.5em;
+}
+
+/* django 연동 후*/
+.like-section {
+  display: flex;
+  margin: 1em;
+  align-items: center;
+}
+
+.like-btn {
+  background-color: #5a976b;
+  color: #fff;
+  border:none; 
+  border-radius: 10px; 
+  padding: 10px;
+}
+
+.like-section span {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 0.8em;
+  align-items: center;
+}
+
+.comment-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-box {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 10px; /* 댓글 박스 간의 간격 */
+}
+
+.comment-btn {
+  background-color: #5a976b;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  align-self: flex-end; /* 버튼을 오른쪽으로 정렬 */
+  margin-bottom: 5em;
+}
+
+.comment-info > span {
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none; 
+  padding: 0; 
 }

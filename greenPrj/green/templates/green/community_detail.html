@@ -35,16 +35,18 @@
           {% endif %} {% if user.is_authenticated %}
           <div class="post-actions">
             {% if user == post.author %}
-            <a href="{% url 'green:community_update' post.id %}">수정하기</a>
-            <a href="{% url 'green:community_delete' post.id %}">삭제하기</a>
+            <!-- <a href="{% url 'green:community_update' post.id %}">수정하기</a>
+            <a href="{% url 'green:community_delete' post.id %}">삭제하기</a> -->
             {% endif %}
-            <p>좋아요: <span id="like-count">{{ post.get_likes_count }}</span></p>
-            <form action="{% url 'green:like_post' post.id %}" method="POST">
-              {% csrf_token %}
-              <button type="submit">
-                {% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}
-              </button>
-            </form>
+            <div class="like-section">
+              <form action="{% url 'green:like_post' post.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="like-btn">
+                  {% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}
+                </button>
+              </form>
+              <span id="like-count">{{ post.get_likes_count }}</span>
+            </div>
           </div>
           {% endif %}
         </section>
@@ -72,7 +74,7 @@
           {% endif %} {% if user.is_authenticated %}
           <form method="POST">
             {% csrf_token %} {{ form.as_p }}
-            <button type="submit">댓글 등록</button>
+            <button type="submit" class="comment-btn">댓글 등록</button>
           </form>
           {% endif %}
         </div>
