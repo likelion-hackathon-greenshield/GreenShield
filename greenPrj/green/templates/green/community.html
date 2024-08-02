@@ -8,9 +8,10 @@
     <title>GreenShield</title>
     <link rel="stylesheet" href="{% static 'css/community.css' %}" />
   </head>
-  <html>
-    <body class="community-container">
-      <h1>커뮤니티</h1>
+
+  <body>
+    <div class = "community-container">
+      <h1 class="page-name">커뮤니티</h1>
       <form method="get" id="categoryForm">
         <input type="hidden" name="category" id="categoryInput" value="{{ selected_category }}" />
       </form>
@@ -60,12 +61,10 @@
               />
               <div class="options-box">
                 <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
-                  <img src="{% static 'img/commu_delete.png' %}" alt="삭제" />
-                  <span class="delete-text">게시물 삭제</span>
+                  <span class="delete-text">삭제</span>
                 </div>
                 <div class="option" id="editOption" data-post-id="{{ post.id }}">
-                  <img src="{% static 'img/commu_edit.png' %}" alt="수정" />
-                  <span class="edit-text">게시물 수정</span>
+                  <span class="edit-text">수정</span>
                 </div>
               </div>
             </div>
@@ -151,6 +150,6 @@
           optionsBox.style.display = optionsBox.style.display === "block" ? "none" : "block";
         }
       </script>
-    </body>
-  </html>
+    </div>
+  </body>
 </html>

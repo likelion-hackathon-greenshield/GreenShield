@@ -14,8 +14,9 @@ def main_view(request):
     return render(request, 'green/main.html')
 
 def community(request):
-    posts = Post.objects.all()
-    return render(request, 'green/community.html', {'posts': posts})
+    category = request.GET.get('category', 'health')
+    posts = Post.objects.filter(category=category)
+    return render(request, 'green/community.html', {'posts': posts, 'selected_category' : category})
 
 def mypage(request):
     user = request.user

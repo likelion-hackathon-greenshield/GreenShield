@@ -1,11 +1,16 @@
 .write-container {
-  margin: 7em 10em;
+  width: 80%; 
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-h1 {
-  text-align: center;
+.page-name {
+  margin: 124px 0 16px 0;
+  font-weight: 500;
   font-size: 40px;
-  font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
 
 .category-selector,
@@ -18,55 +23,41 @@ h1 {
   cursor: pointer;
 }
 
-.category-selector {
-  margin: 1em 0.7em;
-  padding: 15px;
-  width: 120px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.category-selector span {
+.form-group label {
+  font-size: 20px;
   font-weight: bold;
 }
 
-.category-dropdown {
-  display: none;
-  position: absolute;
-  top: 110%;
-  left: 0;
+.category-selector {
+  position: relative;
   background-color: #ffffff;
-  border: 1px solid rgba(186, 227, 179, 1);
+  border: 2px solid rgba(186, 227, 179, 1);
   border-radius: 5px;
+  padding: 0.7em 0;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  margin: 1em 0.7em;
+  font-size: 18px;
+}
+
+.category-selector select {
   width: 100%;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-.category-dropdown a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #000000;
-  border-bottom: 1px solid #ddd;
-}
-
-.category-dropdown a:last-child {
-  border-bottom: none;
-}
-
-.category-dropdown a:hover {
-  background-color: #f0f0f0;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  appearance: none; /* 기본 화살표 없애기 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .content-box {
   margin: 0 auto;
-  width: 840px;
-  height: 400px;
   background-color: #ffffff;
   border: 2px solid rgba(186, 227, 179, 1);
   border-radius: 5px;
   padding: 15px;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -80,47 +71,36 @@ h1 {
 
 .button-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.button-container label,
-.button-container button {
-  margin-right: 10px;
+  justify-content: space-between;
+  margin-top: 1em;
 }
 
 .button-container input[type="file"] {
   display: none;
 }
 
-.button-container button {
-  margin: 1em 2em;
-  padding: 10px 20px;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-}
-
 .form-control-file {
-  margin: 1em 1em;
-  position: relative;
+  margin: 1em auto;
   background-color: #ffffff;
   border: 2px solid rgba(186, 227, 179, 1);
   border-radius: 5px;
   padding: 15px;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .register-btn {
-  margin: 1em 0.7em;
-  position: relative;
+  padding: 0.7em 1.7em;
   border-radius: 5px;
-  padding: 15px;
-  background-color: rgba(186, 227, 179, 1);
-  color: rgba(103, 103, 103, 1);
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  background-color: gray;
 }
 
-.upload-btn:hover,
 .register-btn:hover {
-  opacity: 0.8;
+  background-color: #5a976b;
 }

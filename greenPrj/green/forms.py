@@ -2,11 +2,12 @@ from django import forms
 from .models import Post, Comment, Question, Answer
 
 class PostForm(forms.ModelForm):
-    content = forms.CharField(label='', widget=forms.Textarea(attrs={'rows': 10}))
+    content = forms.CharField(label='', widget=forms.Textarea(attrs={'rows': 10, 'class': 'content-box'}))
     class Meta:
         model = Post
         fields = ['category', 'content', 'image', 'video']
         widgets = {
+            'category': forms.Select(attrs={'class': 'category-selector'}),
             'image': forms.FileInput(attrs={'class': 'form-control-file'}),
             'video': forms.FileInput(attrs={'class': 'form-control-file'}),
         }

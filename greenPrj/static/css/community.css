@@ -1,17 +1,23 @@
 .community-container {
-  margin: 7em 10em;
+  width: 80%; 
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-.community-container h1 {
-  text-align: center;
+.page-name {
+  margin: 124px 0 16px 0;
+  font-weight: 500;
   font-size: 40px;
-  font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
 
 .board-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1em;
+  margin: 1em 0;
+  max-width: 1000px;
 }
 
 .board {
@@ -24,6 +30,7 @@
   font-size: 20px;
   border: none;
   padding: 0.5em;
+  font-weight: bold;
   background-color: transparent;
 }
 
@@ -33,18 +40,23 @@
   border-radius: 5px;
 }
 
-.post-button button {
+.post-button > .btn {
   font-size: 20px;
   border: none;
   background-color: rgba(186, 227, 179, 1);
   padding: 0.5em;
   border-radius: 5px;
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
 }
 
-/*게시물*/
+/*寃뚯떆臾�*/
 .posts {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  max-width: 1000px;
 }
 
 .post-info-container {
@@ -60,19 +72,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1em;
-}
-
-.profile-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 .post-info {
   display: flex;
   flex-direction: column;
-  margin-left: 1em;
 }
 
 .author {
@@ -91,15 +95,18 @@
 }
 
 .post-content {
-  max-width: 650px;
   text-align: left;
-  margin: 1em auto;
-
+  text-decoration: none;
+  color:black;
   display: block;
 }
 
+.post > a {
+  text-decoration: none;
+}
+
 .post-image {
-  width: 650px;
+  width: 640px;
   height: auto;
   margin: 0 auto;
   display: block;
@@ -129,7 +136,7 @@
   color: rgba(195, 28, 36, 1);
 }
 
-/* 모달 스타일 */
+/* 紐⑤떖 �ㅽ��� */
 .modal {
   display: none;
   position: fixed;
@@ -154,8 +161,8 @@
 }
 
 .delete-confirm {
-  background-color: red;
-  color: white;
+  background-color: rgba(195, 28, 36, 1);
+  color: rgb(237, 237, 237);
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
