@@ -49,8 +49,17 @@ section button.yes {
 section button.yes:hover {
   background-color: #5a976b;
 }
-section button.no {
+a.a-margin {
   margin: 32px 12px;
+  height: 56px;
+}
+a.a-margin.width-118 {
+  margin: 32px 12px;
+  width: 118px;
+  height: 56px;
+}
+section button.no {
+  margin: 0;
   padding: 12px 32px;
 
   font-weight: 500;
