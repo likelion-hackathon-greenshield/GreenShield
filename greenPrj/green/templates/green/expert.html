@@ -30,7 +30,7 @@
               <p class="location">{{ expert.location }}</p>
               <p class="introduce">{{ expert.description }}</p>
             </div>
-            <a href="{% url 'green:reserve' expert.id %}">
+            <a href="{% url 'green:reserve' expert.id %}" class="button">
               <button>예약하기</button>
             </a>
           </div>

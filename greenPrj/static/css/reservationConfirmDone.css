@@ -46,6 +46,9 @@ section button.yes {
   border-radius: 10px;
   background-color: #bae3b3;
 }
+section button.yes:hover {
+  background-color: #5a976b;
+}
 section button.no {
   margin: 32px 12px;
   padding: 12px 32px;
@@ -56,4 +59,7 @@ section button.no {
   border: 2.5px solid #bae3b3;
   border-radius: 10px;
   background-color: transparent;
+}
+section button.no:hover {
+  background-color: #e4f6e0;
 }

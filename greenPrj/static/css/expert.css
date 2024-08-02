@@ -88,9 +88,14 @@ section p.introduce {
   font-size: 20px;
   color: #333333;
 }
-section button {
+a.button {
   margin: 28px;
 
+  width: 108px;
+  height: 48px;
+}
+section button {
+  margin: 0;
   width: 108px;
   height: 48px;
 
@@ -101,4 +106,7 @@ section button {
   font-weight: 900;
   font-size: 16px;
   color: white;
+}
+section button:hover {
+  background-color: #0056b3;
 }

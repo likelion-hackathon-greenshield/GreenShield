@@ -61,6 +61,9 @@ section.expert-info button {
   font-size: 16px;
   color: white;
 }
+section.expert-info button:hover {
+  background-color: #0056b3;
+}
 section.expert-info p.location {
   margin: 0 0 20px 0;
   padding: 0;
@@ -159,6 +162,9 @@ section.reservation-time tbody td {
   text-align: center;
 
   border-radius: 12px;
+}
+section.reservation-time tbody td:hover {
+  background-color: #e4f6e0;
 }
 /* 예약 시간 */
 section.reservation-time div.time-list {

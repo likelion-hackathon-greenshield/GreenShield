@@ -148,6 +148,9 @@ button.todo-submit {
   border-radius: 10px;
   background-color: #5a976b;
 }
+button.todo-submit:hover {
+  background-color: #0056b3;
+}
 /* 분석 결과 그래프 */
 div.chart {
   margin: 52px 0px;
