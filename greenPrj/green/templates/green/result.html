@@ -31,9 +31,10 @@
             <h4><span>{{ total_score }}점</span>/50점</h4>
           </div>
           <div class="graph-container">
-            <!-- 그래프 두 배 적용 수정 필요, js 추가? -->
-            <div class="graph"></div>
-            <p>{{ total_score }}%</p>
+            <!-- 그래프 두 배 적용 수정 필요, js 추가 -->
+            <!-- background: conic-gradient(#bae3b3 0% (total_score의 2배)%, #5a976b (total_score의 2배)% 100%); -->
+            <div class="graph" data-total-score="{{ total_score }}"></div>
+            <p class="score-percent"></p>
           </div>
         </div>
       </a>
@@ -72,5 +73,7 @@
         </form>
       </section>
     </section>
+
+    <script src="{% static 'js/result.js' %}"></script>
   </body>
 </html>
