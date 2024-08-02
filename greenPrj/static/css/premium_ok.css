@@ -1,0 +1,58 @@
+body {
+    background: rgba(243, 250, 237, 1);
+}
+
+.container {
+    padding: 4em 2em;
+    justify-content: center;
+    margin-top: 20%;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.container p {
+    font-size: 18px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.left {
+    flex: 1;
+    margin-left: 2em;
+}
+
+.virtual_account {
+    margin-top: 3em;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button {
+    text-align: center; 
+    margin-top: 7em;
+    padding: 1em 7em;
+    background: rgba(243, 250, 237, 1);
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(90, 151, 107, 1);
+    color: white;
+}
+
+form > a {
+    margin-left: 1em;
+    color: gray;
+    text-decoration: none;
+    font-size: 18px;
+}

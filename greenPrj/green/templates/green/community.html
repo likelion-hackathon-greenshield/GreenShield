@@ -1,52 +1,156 @@
+{% load static %} {% include 'green/header.html' %}
+
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-</head>
-<body>
-    <h2>Green Shield</h2>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <br />
-    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-    <a href="{% url 'green:community' %}">커뮤니티</a>
-    <a href="{% url 'green:market' %}">추천 상품</a>
-    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
-    <hr />
-    <h2>커뮤니티</h2>
-    <form method="get">
-        <label for="category">카테고리 선택:</label>
-        <select name="category" id="category" onchange="this.form.submit()">
-            <option value="health" {% if request.GET.category == "health" %}selected{% endif %}>건강 게시판</option>
-            <option value="free" {% if request.GET.category == "free" %}selected{% endif %}>자유 게시판</option>
-        </select>
-    </form>
-    <br>
-    <a href="{% url 'green:community_create' %}">게시물 작성</a>
-    {% if posts %}
-        <ul>
-            {% for post in posts %}
-                {% if not request.GET.category or request.GET.category == post.category %}
-                    <li>
-                        <a href="{% url 'green:community_detail' post.id %}">
-                            <p>{{ post.author.username }}</p>
-                            <p>{{ post.created_at }}</p>
-                            <p>{{ post.content }}</p>
-                            {% if post.image %}
-                                <img src="{{ post.image.url }}" width="300">
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <hr />
-    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
-</body>
+    <title>GreenShield</title>
+    <link rel="stylesheet" href="{% static 'css/community.css' %}" />
+  </head>
+  <html>
+    <body class="community-container">
+      <h1>커뮤니티</h1>
+      <form method="get" id="categoryForm">
+        <input type="hidden" name="category" id="categoryInput" value="{{ selected_category }}" />
+      </form>
+      <div class="board-container">
+        <div class="board">
+          <button
+            class="tab {% if selected_category == 'health' %}active{% endif %}"
+            data-category="health"
+            onclick="changeCategory('health')"
+          >
+            건강 게시판
+          </button>
+          <button
+            class="tab {% if selected_category == 'free' %}active{% endif %}"
+            data-category="free"
+            onclick="changeCategory('free')"
+          >
+            자유 게시판
+          </button>
+        </div>
+        <div class="post-button">
+          <a href="{% url 'green:community_create' %}" id="writePostButton" class="btn"
+            >게시물 작성</a
+          >
+        </div>
+      </div>
+
+      <div class="posts">
+        {% if posts %} {% for post in posts %}
+        <!--  -->
+        {% if not request.GET.category or request.GET.category == post.category %}
+        <div class="post" data-category="{{ post.category }}">
+          <div class="post-header">
+            <div class="post-info-container">
+              <!-- <img src="img/AnonymousProfile_60x60.png" alt="프로필사진" class="profile-img" /> -->
+              <div class="post-info">
+                <span class="author">{{ post.author.username }}</span>
+                <span class="post-time">{{ post.created_at }}</span>
+              </div>
+            </div>
+            <div class="options-container">
+              <img
+                src="{% static 'img/commu_more.png' %}"
+                alt="더보기"
+                class="more-options"
+                onclick="showOptions(this)"
+              />
+              <div class="options-box">
+                <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
+                  <img src="{% static 'img/commu_delete.png' %}" alt="삭제" />
+                  <span class="delete-text">게시물 삭제</span>
+                </div>
+                <div class="option" id="editOption" data-post-id="{{ post.id }}">
+                  <img src="{% static 'img/commu_edit.png' %}" alt="수정" />
+                  <span class="edit-text">게시물 수정</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="{% url 'green:community_detail' post.id %}">
+            <p class="post-content">{{ post.content }}</p>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="게시물 이미지" class="post-image" />
+            {% endif %}
+          </a>
+        </div>
+        {% endif %} {% endfor %} {% else %}
+        <p>게시물이 없습니다.</p>
+        {% endif %}
+      </div>
+
+      <div id="deleteModal" class="modal">
+        <div class="modal-content">
+          <p>게시물을 삭제할까요?</p>
+          <p>삭제된 게시물은 복구할 수 없습니다.</p>
+          <form id="deleteForm" method="post" action="">
+            {% csrf_token %}
+            <button type="button" id="deleteConfirm" class="delete-confirm">삭제하기</button>
+            <button type="button" id="deleteCancel" class="delete-cancel" onclick="closeModal()">
+              취소
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <script>
+        // 카테고리 변경 함수
+        function changeCategory(category) {
+          document.getElementById("categoryInput").value = category;
+          document.getElementById("categoryForm").submit();
+        }
+
+        // DOMContentLoaded 이벤트 리스너
+        document.addEventListener("DOMContentLoaded", () => {
+          // 수정 및 삭제 옵션 클릭 시 처리
+          document.querySelectorAll(".option").forEach((option) => {
+            const postId = option.getAttribute("data-post-id"); // 게시물 ID 가져오기
+            if (option.id === "editOption") {
+              option.addEventListener("click", () => {
+                window.location.href = "{% url 'green:community_update' post_id='0' %}".replace(
+                  "0",
+                  postId
+                ); // 수정 페이지로 이동
+              });
+            } else if (option.id === "deleteOption") {
+              option.addEventListener("click", () => {
+                confirmDelete(postId); // 모달 열기 및 게시물 ID 설정
+              });
+            }
+          });
+        });
+
+        // 모달을 표시하는 함수
+        function confirmDelete(postId) {
+          document.getElementById("deleteModal").style.display = "block";
+          document.getElementById("deleteForm").action =
+            "{% url 'green:community_delete' '0' %}".replace("0", postId); // 삭제 URL 설정
+        }
+
+        // 모달을 닫는 함수
+        function closeModal() {
+          document.getElementById("deleteModal").style.display = "none";
+        }
+
+        // 모달에서 삭제 확인 버튼 클릭 시 처리할 함수
+        function deletePost() {
+          document.getElementById("deleteForm").submit(); // 폼 제출
+          closeModal(); // 모달을 닫습니다.
+        }
+
+        // 모달 관련 이벤트 리스너
+        document.getElementById("deleteConfirm").addEventListener("click", deletePost);
+        document.getElementById("deleteCancel").addEventListener("click", closeModal);
+
+        // 옵션 박스 표시/숨기기
+        function showOptions(element) {
+          const optionsBox = element.nextElementSibling;
+          optionsBox.style.display = optionsBox.style.display === "block" ? "none" : "block";
+        }
+      </script>
+    </body>
+  </html>
 </html>

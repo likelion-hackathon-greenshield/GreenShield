@@ -1,0 +1,29 @@
+body {
+    background: rgba(243, 250, 237, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  h2 {
+    color: rgba(90, 151, 107, 1);
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .highlight {
+    color: rgba(90, 151, 107, 1);
+  }
+
+  a {
+    color: gray;
+  }
