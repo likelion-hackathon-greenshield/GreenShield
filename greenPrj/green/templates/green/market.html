@@ -1,60 +1,87 @@
+{% load static %} {% include 'green/header.html' %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GreenShield</title>
+    <link rel="stylesheet" href="{% static 'css/market.css' %}" />
   </head>
+
   <body>
-    <h2>Green Shield</h2>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
+    <div class="ad-section ad-section1">
+      <div class="ad-content">
+        <h2>풀리오만의 압도적인 압으로 속근육부터 쫙 풀리는 피로</h2>
+        <p>
+          풀리오는 마사지가 사치가 아닌 양치질처럼 기본 될 수 있도록 추구하는 건강하고 간편한 마사지 브랜드입니다.
+          <br />
+          바쁜 일상에 쫓겨 내 몸 하나 제대로 챙길 시간이 없었다면 풀리 종아리, 어깨, 손, 전신 마사지로 붓고 저린 내 몸을
+          정성스레 케어해보세요
+        </p>
+        <a href="{% url 'green:external_redirect_puliodays' %}" class="btn">Shop Now</a>
+      </div>
+      <div class="product">
+        <img src="{% static 'img/market-1.png' %}" alt="광고 이미지1" />
+        <div class="product-info">
+          <p class="product-name">[풀리오] 종아리 마사지기 지퍼&<br />벨크 이중형&증정용 파우치</p>
+          <p class="product-price">198,000원</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-section ad-section2">
+      <div class="product">
+        <img src="{% static 'img/market-2.png' %}" alt="광고 이미지2" />
+        <div class="product-info">
+          <p class="product-name">[레드씰] 치약4종 택 1</p>
+          <p class="product-price">4,160원</p>
+        </div>
+      </div>
+      <div class="ad-content">
+        <h2>뉴질랜드에서 온 1등 허브치약</h2>
+        <p>
+          청정지역 뉴질랜드에서 온 레드씰 치약이 상쾌한 숨결과 개운함을 드릴게요.<br />
+          구취제거에 탁월한 프로폴리스, 흡연자를 위한 스모커스, 프라그 제거에 좋은 베이킹 소다 치약까지. 다양하게
+          준비했으니 구강 고민에 따라 골라보세요.
+        </p>
+        <a href="{% url 'green:external_redirect_costco' %}" class="btn">Shop Now</a>
+      </div>
+    </div>
+
     <hr />
-    <br />
-    <a href="{% url 'green:test' %}">환경 호르몬 노출 평가</a>
-    <a href="{% url 'green:list' %}">맞춤형 플래너</a>
-    <a href="{% url 'green:community' %}">커뮤니티</a>
-    <a href="{% url 'green:market' %}">추천 상품</a>
-    <a href="{% url 'green:expert' %}">전문가 상담/예약</a>
-    <hr />
-    <p>
-      <a href="{% url 'green:external_redirect_puliodays' %}"
-        >풀리오 종아리 마사지기</a
-      >
-    </p>
-    <p>
-      <a href="{% url 'green:external_redirect_costco' %}"
-        >코스트코 Red Seal 치약</a
-      >
-    </p>
-    <hr />
-    <h3>추천 상품</h3>
-    <form method="get">
-        <label for="category">카테고리 선택:</label>
-        <select name="category" id="category" onchange="this.form.submit()">
-            {% for category in categories %}
-                <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
-    <ol>
+
+    <div class="rec-section">
+      <h2>- 추천 상품 -</h2>
+      <form method="get">
+        <div class="button-group">
+          {% for category in categories %} <input type="radio" id="{{ category.id }}" name="category" value="{{
+          category.id }}" {% if request.GET.category == category.id|stringformat:"s" or category.name == "친환경" %}
+          checked {% endif %} onchange="this.form.submit()" />
+          <label for="{{ category.id }}">{{ category.name }}</label>
+          {% endfor %}
+        </div>
+      </form>
+
+      <ol>
         {% for product in products %}
-            <li>
-                <a href="{{ product.url }}" target="_blank">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100">
-                <p>{{ product.company }}</p>
-                <p>{{ product.name }}</p>
-                <p>{{ product.price }}원</p>
-                {% if product.url %}
-                {% endif %}
-            </a>
-            </li>
+        <li>
+          <!-- <div class="rec-product-list"> -->
+          <a href="{{ product.url }}" target="_blank">
+            <div class="rec-product">
+              <img src="{{ product.image.url }}" alt="{{ product.name }}" width="180" />
+              <div class="rec-product-info">
+                <div class="brand">{{ product.company }}</div>
+                <div class="name">{{ product.name }}</div>
+                <div class="price">{{ product.price }}원</div>
+              </div>
+            </div>
+          </a>
+          {% if product.url %} {% endif %}
+        </li>
         {% endfor %}
-    </ol>
-    <br>
-    <br>
-    <hr>
-    <a href="{% url 'green:main' %}">홈으로 돌아가기</a>
+        <!-- </div> -->
+      </ol>
+    </div>
   </body>
 </html>

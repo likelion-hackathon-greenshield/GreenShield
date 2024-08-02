@@ -1,23 +1,45 @@
+{% load static %} {% include 'green/header.html' %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GreenShield</title>
+    <link rel="stylesheet" href="{% static 'css/community_create.css' %}" />
   </head>
-  <body>
-    {{ user.username }}
-    <a href="{% url 'green:mypage' %}">마이페이지</a>
-    <a href="{% url 'logout' %}">로그아웃</a>
-    <hr />
-    <h2>게시물 작성</h2>
-    <form
-      method="post"
-      action="{% url 'green:community_create' %}"
-      enctype="multipart/form-data"
-    >
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">등록</button>
-    </form>
-  </body>
+  <html>
+    <body class="write-container">
+      <h1>게시물 작성</h1>
+      <div method="post" action="{% url 'green:community_create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- 카테고리 선택 박스 -->
+        <div class="form-group">
+          <label for="{{ form.category.id_for_label }}">카테고리</label>
+          {{ form.category }}
+        </div>
+        <!-- <div class="category-selector" onclick="toggleDropdown()">
+        <span id="category-text">카테고리 선택</span>
+        <div class="category-dropdown">
+          <a href="#" onclick="selectCategory('건강 게시판')">건강 게시판</a>
+          <a href="#" onclick="selectCategory('자유게시판')">자유게시판</a>
+        </div>
+      </div> -->
+
+        <!-- 내용 입력 박스 -->
+        <div class="form-content">{{ form.content }}</div>
+
+        <!-- 버튼들 -->
+        <div class="button-container">
+          <div class="insert-container">
+            <label for="{{ form.image.id_for_label }}" class="form-control-file">사진 업로드</label>
+            {{ form.image }}
+            <label for="{{ form.video.id_for_label }}" class="form-control-file">영상 업로드</label>
+            {{ form.video }}
+          </div>
+          <button type="submit" class="register-btn">등록</button>
+        </div>
+      </div>
+    </body>
+  </html>
 </html>
