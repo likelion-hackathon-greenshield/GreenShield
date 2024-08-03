@@ -13,7 +13,7 @@
   <body>
     <!-- 설문조사 페이지 -->
     <section>
-      <form method="post">
+      <form method="post" class="flex">
         {% csrf_token %}
 
         <!-- 설문 문항 01번 -->
@@ -207,8 +207,8 @@
         </div>
 
         <!-- {{ form.as_p }} -->
-        <!-- 뎁툴 확인 필요 -->
-        <button type="submit">제출</button>
+        <!-- 뎁툴 확인 필요(백) -->
+        <button type="submit" class="submit">제출</button>
       </form>
     </section>
   </body>
