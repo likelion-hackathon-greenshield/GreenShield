@@ -10,88 +10,89 @@
   </head>
 
   <body>
-    <div class = "community-container">
       <h1 class="page-name">커뮤니티</h1>
-      <form method="get" id="categoryForm">
-        <input type="hidden" name="category" id="categoryInput" value="{{ selected_category }}" />
-      </form>
-      <div class="board-container">
-        <div class="board">
-          <button
-            class="tab {% if selected_category == 'health' %}active{% endif %}"
-            data-category="health"
-            onclick="changeCategory('health')"
-          >
-            건강 게시판
-          </button>
-          <button
-            class="tab {% if selected_category == 'free' %}active{% endif %}"
-            data-category="free"
-            onclick="changeCategory('free')"
-          >
-            자유 게시판
-          </button>
-        </div>
-        <div class="post-button">
-          <a href="{% url 'green:community_create' %}" id="writePostButton" class="btn"
-            >게시물 작성</a
-          >
-        </div>
-      </div>
-
-      <div class="posts">
-        {% if posts %} {% for post in posts %}
-        <!--  -->
-        {% if not request.GET.category or request.GET.category == post.category %}
-        <div class="post" data-category="{{ post.category }}">
-          <div class="post-header">
-            <div class="post-info-container">
-              <!-- <img src="img/AnonymousProfile_60x60.png" alt="프로필사진" class="profile-img" /> -->
-              <div class="post-info">
-                <span class="author">{{ post.author.username }}</span>
-                <span class="post-time">{{ post.created_at }}</span>
-              </div>
-            </div>
-            <div class="options-container">
-              <img
-                src="{% static 'img/commu_more.png' %}"
-                alt="더보기"
-                class="more-options"
-                onclick="showOptions(this)"
-              />
-              <div class="options-box">
-                <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
-                  <span class="delete-text">삭제</span>
-                </div>
-                <div class="option" id="editOption" data-post-id="{{ post.id }}">
-                  <span class="edit-text">수정</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a href="{% url 'green:community_detail' post.id %}">
-            <p class="post-content">{{ post.content }}</p>
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt="게시물 이미지" class="post-image" />
-            {% endif %}
-          </a>
-        </div>
-        {% endif %} {% endfor %} {% else %}
-        <p>게시물이 없습니다.</p>
-        {% endif %}
-      </div>
-
-      <div id="deleteModal" class="modal">
-        <div class="modal-content">
-          <p>게시물을 삭제할까요?</p>
-          <p>삭제된 게시물은 복구할 수 없습니다.</p>
-          <form id="deleteForm" method="post" action="">
-            {% csrf_token %}
-            <button type="button" id="deleteConfirm" class="delete-confirm">삭제하기</button>
-            <button type="button" id="deleteCancel" class="delete-cancel" onclick="closeModal()">
-              취소
+      <div class = "community-container">
+        <form method="get" id="categoryForm">
+          <input type="hidden" name="category" id="categoryInput" value="{{ selected_category }}" />
+        </form>
+        <div class="board-container">
+          <div class="board">
+            <button
+              class="tab {% if selected_category == 'health' %}active{% endif %}"
+              data-category="health"
+              onclick="changeCategory('health')"
+            >
+              건강 게시판
             </button>
-          </form>
+            <button
+              class="tab {% if selected_category == 'free' %}active{% endif %}"
+              data-category="free"
+              onclick="changeCategory('free')"
+            >
+              자유 게시판
+            </button>
+          </div>
+          <div class="post-button">
+            <a href="{% url 'green:community_create' %}" id="writePostButton" class="btn"
+              >게시물 작성</a
+            >
+          </div>
+        </div>
+  
+        <div class="posts">
+          {% if posts %} {% for post in posts %}
+          <!--  -->
+          {% if not request.GET.category or request.GET.category == post.category %}
+          <div class="post" data-category="{{ post.category }}">
+            <div class="post-header">
+              <div class="post-info-container">
+                <!-- <img src="img/AnonymousProfile_60x60.png" alt="프로필사진" class="profile-img" /> -->
+                <div class="post-info">
+                  <span class="author">{{ post.author.username }}</span>
+                  <span class="post-time">{{ post.created_at }}</span>
+                </div>
+              </div>
+              <div class="options-container">
+                <img
+                  src="{% static 'img/commu_more.png' %}"
+                  alt="더보기"
+                  class="more-options"
+                  onclick="showOptions(this)"
+                />
+                <div class="options-box">
+                  <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
+                    <span class="delete-text">삭제</span>
+                  </div>
+                  <div class="option" id="editOption" data-post-id="{{ post.id }}">
+                    <span class="edit-text">수정</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="{% url 'green:community_detail' post.id %}">
+              <p class="post-content">{{ post.content }}</p>
+              {% if post.image %}
+              <img src="{{ post.image.url }}" alt="게시물 이미지" class="post-image" />
+              {% endif %}
+            </a>
+          </div>
+          {% endif %} {% endfor %} {% else %}
+          <p>게시물이 없습니다.</p>
+          {% endif %}
+        </div>
+  
+        <div id="deleteModal" class="modal">
+          <div class="modal-content">
+            <p>게시물을 삭제할까요?</p>
+            <p>삭제된 게시물은 복구할 수 없습니다.</p>
+            <form id="deleteForm" method="post" action="">
+              {% csrf_token %}
+              <button type="button" id="deleteConfirm" class="delete-confirm">삭제하기</button>
+              <button type="button" id="deleteCancel" class="delete-cancel" onclick="closeModal()">
+                취소
+              </button>
+            </form>
+          </div>
         </div>
       </div>
 
@@ -150,6 +151,5 @@
           optionsBox.style.display = optionsBox.style.display === "block" ? "none" : "block";
         }
       </script>
-    </div>
   </body>
 </html>
