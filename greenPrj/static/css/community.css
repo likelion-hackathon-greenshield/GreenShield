@@ -1,6 +1,5 @@
 .community-container {
   width: 80%; 
-  max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -16,8 +15,7 @@
 .board-container {
   display: flex;
   justify-content: space-between;
-  margin: 1em 0;
-  max-width: 1000px;
+  margin: 3em 15em 2em 15em;
 }
 
 .board {
@@ -56,7 +54,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1000px;
+  margin: 0 15em;
 }
 
 .post-info-container {
@@ -80,13 +78,13 @@
 }
 
 .author {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   line-height: 26px;
 }
 
 .post-time {
-  font-size: 14px;
+  font-size: 16px;
   color: rgba(103, 103, 103, 1);
 }
 
@@ -99,6 +97,7 @@
   text-decoration: none;
   color:black;
   display: block;
+  font-size: 18px;
 }
 
 .post > a {
@@ -106,11 +105,10 @@
 }
 
 .post-image {
-  width: 640px;
-  height: auto;
-  margin: 0 auto;
+  margin: 0 1em;
   display: block;
   border-radius: 10px;
+  width: 90%;
 }
 
 .options-box {

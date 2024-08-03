@@ -1,6 +1,5 @@
 .community-container {
-  width: 80%; 
-  max-width: 1200px;
+  width: 60%; 
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -10,8 +9,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1000px;
 }
+
+.post {
+  margin: 1em 0;
+  padding: 1em;
+  box-sizing: border-box;
+} 
 
 .post-info-container {
   display: flex;
@@ -40,16 +44,14 @@
 }
 
 .post-content {
-  max-width: 1000px;
   text-align: left;
-  margin: 1em auto;
+  margin: 1em;
   display: block;
   font-size: 18px;
 }
 
 .post-image {
-  width: 1000px;
-  height: auto;
+  width: 100%;
   margin: 0 auto;
   display: block;
   border-radius: 10px;
@@ -115,8 +117,8 @@
 /* django 연동 후*/
 .like-section {
   display: flex;
-  margin: 1em;
   align-items: center;
+  margin-right: 5em;
 }
 
 .like-btn {

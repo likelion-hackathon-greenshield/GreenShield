@@ -1,4 +1,5 @@
-{% load static %} {% include 'green/header.html' %}
+{% load static %}
+{% include 'green/header.html' %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -42,7 +43,7 @@
         <h2>뉴질랜드에서 온 1등 허브치약</h2>
         <p>
           청정지역 뉴질랜드에서 온 레드씰 치약이 상쾌한 숨결과 개운함을 드릴게요.<br />
-          구취제거에 탁월한 프로폴리스, 흡연자를 위한 스모커스, 프라그 제거에 좋은 베이킹 소다 치약까지. 다양하게
+          구취제거에 탁월한 프로폴리스, 흡연자를 위한 스모커스, 프라그 제거에 좋은 베이킹 소다 치약까지. 다양하게
           준비했으니 구강 고민에 따라 골라보세요.
         </p>
         <a href="{% url 'green:external_redirect_costco' %}" class="btn">Shop Now</a>
@@ -53,20 +54,20 @@
 
     <div class="rec-section">
       <h2>- 추천 상품 -</h2>
-      <form method="get">
-        <div class="button-group">
-          {% for category in categories %} <input type="radio" id="{{ category.id }}" name="category" value="{{
-          category.id }}" {% if request.GET.category == category.id|stringformat:"s" or category.name == "친환경" %}
-          checked {% endif %} onchange="this.form.submit()" />
-          <label for="{{ category.id }}">{{ category.name }}</label>
-          {% endfor %}
+      <form id="categoryForm" method="get">
+        <div class="button-group" id="buttonGroup">
+            {% for category in categories %}
+                <input type="radio" id="{{ category.id }}" name="category" value="{{ category.id }}"
+                {% if request.GET.category == category.id|stringformat:"s" %}checked{% endif %}
+                onchange="submitFormAjax(event)" />
+                <label for="{{ category.id }}">{{ category.name }}</label>
+            {% endfor %}
         </div>
       </form>
 
       <ol>
         {% for product in products %}
         <li>
-          <!-- <div class="rec-product-list"> -->
           <a href="{{ product.url }}" target="_blank">
             <div class="rec-product">
               <img src="{{ product.image.url }}" alt="{{ product.name }}" width="180" />
@@ -77,11 +78,38 @@
               </div>
             </div>
           </a>
-          {% if product.url %} {% endif %}
         </li>
         {% endfor %}
-        <!-- </div> -->
       </ol>
     </div>
+
+    <script>
+      function submitFormAjax(event) {
+          event.preventDefault();  // 기본 폼 제출 동작을 막습니다.
+      
+          var form = document.getElementById('categoryForm');
+          var formData = new FormData(form);
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', form.action + '?' + new URLSearchParams(formData).toString(), true);
+      
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                  var response = xhr.responseText;
+                  var parser = new DOMParser();
+                  var doc = parser.parseFromString(response, 'text/html');
+                  
+                  // 새로운 content를 가져와서 기존 content를 대체합니다.
+                  var newContent = doc.querySelector('.rec-section ol').innerHTML;
+                  document.querySelector('.rec-section ol').innerHTML = newContent;
+      
+                  // 기존 버튼 그룹을 대체하여 라디오 버튼의 상태를 유지합니다.
+                  var newButtonGroup = doc.querySelector('#buttonGroup').innerHTML;
+                  document.querySelector('#buttonGroup').innerHTML = newButtonGroup;
+              }
+          };
+      
+          xhr.send();
+      }
+      </script>
   </body>
 </html>
