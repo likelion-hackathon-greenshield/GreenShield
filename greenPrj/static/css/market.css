@@ -161,3 +161,7 @@ li > a {
   font-size: 28px; /* 숫자 크기 조정 */
   margin-right: 2em;
 }
+
+div.name {
+  width: 646px;
+}
