@@ -2,6 +2,16 @@ body {
   background-color: #f3faed;
 }
 
+/* 로고 추가 */
+div.logo {
+  width: 266px;
+  height: 55px;
+}
+img.logo {
+  width: 266px;
+  height: 55px;
+}
+
 /* 헤더(top bar) */
 header.top-bar {
   display: flex;
