@@ -38,7 +38,7 @@
                 <span class="post-time">{{ post.created_at }}</span>
               </div>
             </div>
-            <div class="options-container">
+            <!-- <div class="options-container">
               <img src="{% static 'img/commu_more.png' %}" alt="더보기" class="more-options" onclick="showOptions(this)" />
               <div class="options-box">
                 <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
@@ -48,7 +48,7 @@
                   <span class="edit-text">수정</span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <a href="{% url 'green:community_detail' post.id %}">
             <p class="post-content">{{ post.content }}</p>
