@@ -9,179 +9,137 @@
   </head>
 
   <body>
-    <div class="body_all">
-      <div class="signup_top_all">
-        <div class="signup_top">
-          <div class="signup_title">
-            <div class="GS">Green Shield</div>
-            <div class="signup_title_kor">&nbsp;회원가입</div>
+    <!-- 추가 -->
+    <div class="center_all">
+      <!-- 추가 -->
+      <div class="width">
+        <div class="body_all">
+          <div class="signup_top_all">
+            <div class="signup_top">
+              <div class="signup_title">
+                <div class="GS">Green Shield</div>
+                <div class="signup_title_kor">&nbsp;회원가입</div>
+              </div>
+
+              <div class="signup_comment">
+                <div class="signup_comment_text">회원이 되어 특별한 혜택을 경험해 보세요!</div>
+              </div>
+            </div>
           </div>
 
-          <div class="signup_comment">
-            <div class="signup_comment_text">회원이 되어 특별한 혜택을 경험해 보세요!</div>
+          <div class="middle_box_all">
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="id_box_all">
+                <div class="id_box_text">아이디</div>
+                <div class="id_box">
+                  <div class="id_box_input">
+                    <label for="{{ form.username.id_for_label }} " style="display: none">이름:</label>
+                    <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" placeholder="아이디 입력 (6~20자)" class="form-control" value="{{ form.username.value|default_if_none:'' }}" />
+                    {% if form.username.errors %}
+                    <span class="error">{{ form.username.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="password_box_all">
+                <div class="password_box_text">비밀번호</div>
+                <div class="password_box">
+                  <div class="password_box_input">
+                    <label for="{{ form.password1.id_for_label }}" style="display: none">비밀번호:</label>
+                    <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" placeholder="비밀번호 입력 (문자, 숫자, 특수문자 포함 (8~20자))" class="form-control" value="{{ form.password1.value|default_if_none:'' }}" />
+                    {% if form.password1.errors %}
+                    <span class="error">{{ form.password1.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="password_re_box_all">
+                <div class="password_re_box_text">비밀번호 확인</div>
+                <div class="password_re_box">
+                  <div class="password_re_box_input">
+                    <label for="{{ form.password2.id_for_label }}" style="display: none">비밀번호 확인:</label>
+                    <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" placeholder="비밀번호 재입력" class="form-control" value="{{ form.password2.value|default_if_none:'' }}" />
+                    {% if form.password2.errors %}
+                    <span class="error">{{ form.password2.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="name_box_all">
+                <div class="name_box_text">이름</div>
+                <div class="name_box">
+                  <div class="name_box_input">
+                    <label for="{{ form.first_name.id_for_label }}" style="display: none">이름:</label>
+                    <input type="text" name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}" placeholder="이름을 입력해주세요" class="form-control" value="{{ form.first_name.value|default_if_none:'' }}" />
+                    {% if form.first_name.errors %}
+                    <span class="error">{{ form.first_name.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="number_box_all">
+                <div class="number_box_text">전화번호</div>
+                <div class="number_box">
+                  <div class="number_box_input">
+                    <label for="{{ form.phone_number.id_for_label }}" style="display: none">전화번호:</label>
+                    <input type="text" name="{{ form.phone_number.name }}" id="{{ form.phone_number.id_for_label }}" placeholder="휴대폰 번호 입력 ('-' 제외 11자리 입력)" class="form-control" value="{{ form.phone_number.value|default_if_none:'' }}" />
+                    {% if form.phone_number.errors %}
+                    <span class="error">{{ form.phone_number.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="email_box_all">
+                <div class="email_box_text">이메일 주소</div>
+                <div class="email_box">
+                  <div class="email_box_input">
+                    <label for="{{ form.email.id_for_label }}" style="display: none">이메일 주소:</label>
+                    <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" placeholder="이메일 주소" class="form-control" value="{{ form.email.value|default_if_none:'' }}" />
+                    {% if form.email.errors %}
+                    <span class="error">{{ form.email.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="birth_box_all">
+                <div class="birth_box_text">생년월일</div>
+                <div class="birth_box">
+                  <div class="birth_box_input">
+                    <label for="{{ form.birth_date.id_for_label }}" style="display: none">생년월일:</label>
+                    <input type="date" name="{{ form.birth_date.name }}" id="{{ form.birth_date.id_for_label }}" placeholder="년도/월/일" class="form-control" value="{{ form.birth_date.value|default_if_none:'' }}" />
+                    {% if form.birth_date.errors %}
+                    <span class="error">{{ form.birth_date.errors }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="bottom_all">
+                <div class="bottom_left_box">
+                  <div class="bottom_left_box_text">
+                    <button type="submit" class="signup_button">가입하기</button>
+                  </div>
+                </div>
+
+                <div class="bottom_right_box">
+                  <div class="bottom_right_box_text">
+                    <a href="{% url 'login' %}">가입취소</a>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
-      <div class="middle_box_all">
-        <form method="post">
-          {% csrf_token %}
-
-          <div class="id_box_all">
-            <div class="id_box_text">아이디</div>
-            <div class="id_box">
-              <div class="id_box_input">
-                <label for="{{ form.username.id_for_label }} " style="display: none">이름:</label>
-                <input
-                  type="text"
-                  name="{{ form.username.name }}"
-                  id="{{ form.username.id_for_label }}"
-                  placeholder="아이디 입력 (6~20자)"
-                  class="form-control"
-                  value="{{ form.username.value|default_if_none:'' }}"
-                />
-                {% if form.username.errors %}
-                <span class="error">{{ form.username.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="password_box_all">
-            <div class="password_box_text">비밀번호</div>
-            <div class="password_box">
-              <div class="password_box_input">
-                <label for="{{ form.password1.id_for_label }}" style="display: none">비밀번호:</label>
-                <input
-                  type="password"
-                  name="{{ form.password1.name }}"
-                  id="{{ form.password1.id_for_label }}"
-                  placeholder="비밀번호 입력 (문자, 숫자, 특수문자 포함 (8~20자))"
-                  class="form-control"
-                  value="{{ form.password1.value|default_if_none:'' }}"
-                />
-                {% if form.password1.errors %}
-                <span class="error">{{ form.password1.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="password_re_box_all">
-            <div class="password_re_box_text">비밀번호 확인</div>
-            <div class="password_re_box">
-              <div class="password_re_box_input">
-                <label for="{{ form.password2.id_for_label }}" style="display: none">비밀번호 확인:</label>
-                <input
-                  type="password"
-                  name="{{ form.password2.name }}"
-                  id="{{ form.password2.id_for_label }}"
-                  placeholder="비밀번호 재입력"
-                  class="form-control"
-                  value="{{ form.password2.value|default_if_none:'' }}"
-                />
-                {% if form.password2.errors %}
-                <span class="error">{{ form.password2.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="name_box_all">
-            <div class="name_box_text">이름</div>
-            <div class="name_box">
-              <div class="name_box_input">
-                <label for="{{ form.first_name.id_for_label }}" style="display: none">이름:</label>
-                <input
-                  type="text"
-                  name="{{ form.first_name.name }}"
-                  id="{{ form.first_name.id_for_label }}"
-                  placeholder="이름을 입력해주세요"
-                  class="form-control"
-                  value="{{ form.first_name.value|default_if_none:'' }}"
-                />
-                {% if form.first_name.errors %}
-                <span class="error">{{ form.first_name.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="number_box_all">
-            <div class="number_box_text">전화번호</div>
-            <div class="number_box">
-              <div class="number_box_input">
-                <label for="{{ form.phone_number.id_for_label }}" style="display: none">전화번호:</label>
-                <input
-                  type="text"
-                  name="{{ form.phone_number.name }}"
-                  id="{{ form.phone_number.id_for_label }}"
-                  placeholder="휴대폰 번호 입력 ('-' 제외 11자리 입력)"
-                  class="form-control"
-                  value="{{ form.phone_number.value|default_if_none:'' }}"
-                />
-                {% if form.phone_number.errors %}
-                <span class="error">{{ form.phone_number.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="email_box_all">
-            <div class="email_box_text">이메일 주소</div>
-            <div class="email_box">
-              <div class="email_box_input">
-                <label for="{{ form.email.id_for_label }}" style="display: none">이메일 주소:</label>
-                <input
-                  type="email"
-                  name="{{ form.email.name }}"
-                  id="{{ form.email.id_for_label }}"
-                  placeholder="이메일 주소"
-                  class="form-control"
-                  value="{{ form.email.value|default_if_none:'' }}"
-                />
-                {% if form.email.errors %}
-                <span class="error">{{ form.email.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="birth_box_all">
-            <div class="birth_box_text">생년월일</div>
-            <div class="birth_box">
-              <div class="birth_box_input">
-                <label for="{{ form.birth_date.id_for_label }}" style="display: none">생년월일:</label>
-                <input
-                  type="date"
-                  name="{{ form.birth_date.name }}"
-                  id="{{ form.birth_date.id_for_label }}"
-                  placeholder="년도/월/일"
-                  class="form-control"
-                  value="{{ form.birth_date.value|default_if_none:'' }}"
-                />
-                {% if form.birth_date.errors %}
-                <span class="error">{{ form.birth_date.errors }}</span>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-
-          <div class="bottom_all">
-            <div class="bottom_left_box">
-              <div class="bottom_left_box_text">
-                <button type="submit" class="signup_button">가입하기</button>
-              </div>
-            </div>
-
-            <div class="bottom_right_box">
-              <div class="bottom_right_box_text">
-                <a href="{% url 'login' %}">가입취소</a>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
     </div>
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

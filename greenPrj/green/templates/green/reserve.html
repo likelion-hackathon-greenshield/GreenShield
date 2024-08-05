@@ -17,11 +17,7 @@
       <section class="container">
         <section class="expert-info">
           <div class="img-back_reservation_expert">
-            <img
-              src="{{ expert.photo.url }}"
-              alt="{{ expert.name }}"
-              class="img-back_reservation_expert"
-            />
+            <img src="{{ expert.photo.url }}" alt="{{ expert.name }}" class="img-back_reservation_expert" />
           </div>
           <div>
             <div class="expert-title">
@@ -41,18 +37,10 @@
               <h4 class="month" id="month-title"></h4>
               <div>
                 <button type="button" class="icon-arrow" id="prev-month">
-                  <img
-                    src="{% static 'img/iconReservationArrowLeft_16x16.png' %}"
-                    alt="img"
-                    class="icon-arrow"
-                  />
+                  <img src="{% static 'img/iconReservationArrowLeft_16x16.png' %}" alt="img" class="icon-arrow" />
                 </button>
                 <button type="button" class="icon-arrow" id="next-month">
-                  <img
-                    src="{% static 'img/iconReservationArrowRight_16x16.png' %}"
-                    alt="img"
-                    class="icon-arrow"
-                  />
+                  <img src="{% static 'img/iconReservationArrowRight_16x16.png' %}" alt="img" class="icon-arrow" />
                 </button>
               </div>
             </div>
@@ -119,33 +107,15 @@
 
           <!-- 예약 시간 선택 -->
           <div class="time-list">
-            <button type="button" value="08:00" data-time="08:00" class="time">
-              08:00 AM
-            </button>
-            <button type="button" value="09:00" data-time="09:00" class="time">
-              09:00 AM
-            </button>
-            <button type="button" value="10:00" data-time="10:00" class="time">
-              10:00 AM
-            </button>
-            <button type="button" value="11:00" data-time="11:00" class="time">
-              11:00 AM
-            </button>
-            <button type="button" value="12:00" data-time="12:00" class="time">
-              12:00 PM
-            </button>
-            <button type="button" value="13:00" data-time="13:00" class="time">
-              01:00 PM
-            </button>
-            <button type="button" value="14:00" data-time="14:00" class="time">
-              02:00 PM
-            </button>
-            <button type="button" value="15:00" data-time="15:00" class="time">
-              03:00 PM
-            </button>
-            <button type="button" value="16:00" data-time="16:00" class="time">
-              04:00 PM
-            </button>
+            <button type="button" value="08:00" data-time="08:00" class="time">08:00 AM</button>
+            <button type="button" value="09:00" data-time="09:00" class="time">09:00 AM</button>
+            <button type="button" value="10:00" data-time="10:00" class="time">10:00 AM</button>
+            <button type="button" value="11:00" data-time="11:00" class="time">11:00 AM</button>
+            <button type="button" value="12:00" data-time="12:00" class="time">12:00 PM</button>
+            <button type="button" value="13:00" data-time="13:00" class="time">01:00 PM</button>
+            <button type="button" value="14:00" data-time="14:00" class="time">02:00 PM</button>
+            <button type="button" value="15:00" data-time="15:00" class="time">03:00 PM</button>
+            <button type="button" value="16:00" data-time="16:00" class="time">04:00 PM</button>
           </div>
           <input type="hidden" id="time" name="time" required />
           <!-- <label for="time"></label>
@@ -164,5 +134,7 @@
       </section>
     </form>
     <script src="{% static 'js/calendar.js' %}"></script>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

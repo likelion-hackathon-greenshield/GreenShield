@@ -19,10 +19,7 @@
         <div class="result-container">
           <div class="profile">
             <div class="profile-img">
-              <img
-                src="{% static 'img/anonymousProfile_surveyResult_116x116.png' %}"
-                alt="img"
-              />
+              <img src="{% static 'img/anonymousProfile_surveyResult_116x116.png' %}" alt="img" />
             </div>
             <p>{{ user.username }}</p>
           </div>
@@ -61,10 +58,7 @@
             <li class="list">
               <!-- <input id="list1" class="list-checkbox" type="checkbox" /> -->
               <label for="list1" class="list-checkbox">
-                <img
-                  class="list-checkbox"
-                  src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}"
-                />
+                <img class="list-checkbox" src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}" />
               </label>
               <label for="list1" class="list-content"> {{ to_do }} </label>
             </li>
@@ -75,5 +69,7 @@
     </section>
 
     <script src="{% static 'js/result.js' %}"></script>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

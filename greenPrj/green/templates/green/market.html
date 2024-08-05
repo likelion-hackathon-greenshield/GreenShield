@@ -1,5 +1,4 @@
-{% load static %}
-{% include 'green/header.html' %}
+{% load static %} {% include 'green/header.html' %}
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,8 +16,7 @@
         <p>
           풀리오는 마사지가 사치가 아닌 양치질처럼 기본 될 수 있도록 추구하는 건강하고 간편한 마사지 브랜드입니다.
           <br />
-          바쁜 일상에 쫓겨 내 몸 하나 제대로 챙길 시간이 없었다면 풀리 종아리, 어깨, 손, 전신 마사지로 붓고 저린 내 몸을
-          정성스레 케어해보세요
+          바쁜 일상에 쫓겨 내 몸 하나 제대로 챙길 시간이 없었다면 풀리 종아리, 어깨, 손, 전신 마사지로 붓고 저린 내 몸을 정성스레 케어해보세요
         </p>
         <a href="{% url 'green:external_redirect_puliodays' %}" class="btn">Shop Now</a>
       </div>
@@ -43,8 +41,7 @@
         <h2>뉴질랜드에서 온 1등 허브치약</h2>
         <p>
           청정지역 뉴질랜드에서 온 레드씰 치약이 상쾌한 숨결과 개운함을 드릴게요.<br />
-          구취제거에 탁월한 프로폴리스, 흡연자를 위한 스모커스, 프라그 제거에 좋은 베이킹 소다 치약까지. 다양하게
-          준비했으니 구강 고민에 따라 골라보세요.
+          구취제거에 탁월한 프로폴리스, 흡연자를 위한 스모커스, 프라그 제거에 좋은 베이킹 소다 치약까지. 다양하게 준비했으니 구강 고민에 따라 골라보세요.
         </p>
         <a href="{% url 'green:external_redirect_costco' %}" class="btn">Shop Now</a>
       </div>
@@ -56,12 +53,9 @@
       <h2>- 추천 상품 -</h2>
       <form id="categoryForm" method="get">
         <div class="button-group" id="buttonGroup">
-            {% for category in categories %}
-                <input type="radio" id="{{ category.id }}" name="category" value="{{ category.id }}"
-                {% if request.GET.category == category.id|stringformat:"s" %}checked{% endif %}
-                onchange="submitFormAjax(event)" />
-                <label for="{{ category.id }}">{{ category.name }}</label>
-            {% endfor %}
+          {% for category in categories %} <input type="radio" id="{{ category.id }}" name="category" value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}checked{% endif %} onchange="submitFormAjax(event)" />
+          <label for="{{ category.id }}">{{ category.name }}</label>
+          {% endfor %}
         </div>
       </form>
 
@@ -85,31 +79,33 @@
 
     <script>
       function submitFormAjax(event) {
-          event.preventDefault();  // 기본 폼 제출 동작을 막습니다.
-      
-          var form = document.getElementById('categoryForm');
-          var formData = new FormData(form);
-          var xhr = new XMLHttpRequest();
-          xhr.open('GET', form.action + '?' + new URLSearchParams(formData).toString(), true);
-      
-          xhr.onreadystatechange = function() {
-              if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                  var response = xhr.responseText;
-                  var parser = new DOMParser();
-                  var doc = parser.parseFromString(response, 'text/html');
-                  
-                  // 새로운 content를 가져와서 기존 content를 대체합니다.
-                  var newContent = doc.querySelector('.rec-section ol').innerHTML;
-                  document.querySelector('.rec-section ol').innerHTML = newContent;
-      
-                  // 기존 버튼 그룹을 대체하여 라디오 버튼의 상태를 유지합니다.
-                  var newButtonGroup = doc.querySelector('#buttonGroup').innerHTML;
-                  document.querySelector('#buttonGroup').innerHTML = newButtonGroup;
-              }
-          };
-      
-          xhr.send();
+        event.preventDefault(); // 기본 폼 제출 동작을 막습니다.
+
+        var form = document.getElementById("categoryForm");
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", form.action + "?" + new URLSearchParams(formData).toString(), true);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            var response = xhr.responseText;
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(response, "text/html");
+
+            // 새로운 content를 가져와서 기존 content를 대체합니다.
+            var newContent = doc.querySelector(".rec-section ol").innerHTML;
+            document.querySelector(".rec-section ol").innerHTML = newContent;
+
+            // 기존 버튼 그룹을 대체하여 라디오 버튼의 상태를 유지합니다.
+            var newButtonGroup = doc.querySelector("#buttonGroup").innerHTML;
+            document.querySelector("#buttonGroup").innerHTML = newButtonGroup;
+          }
+        };
+
+        xhr.send();
       }
-      </script>
+    </script>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

@@ -1,29 +1,38 @@
 body {
   background-color: #f3faed;
   transform: scale(1.5);
-  transform-origin: top left; /* 좌측 상단에서 확대 */
+  /* transform-origin: top left; 좌측 상단에서 확대 */
+  transform-origin: top center; /* 좌측 상단에서 확대 */
   /* 확대 시 스크롤바가 생기지 않도록 추가 스타일 */
   overflow: hidden;
-  width: 100vw; /* 100% 뷰포트 너비 */
-  height: 100vh; /* 100% 뷰포트 높이 */
+  /* width: 100vw; 100% 뷰포트 너비 */
+  /* height: 100vh; 100% 뷰포트 높이 */
+  display: flex;
+  justify-content: center;
 }
 
-.title_text {
+/* .title_text {
   font-size: 22px;
   font-weight: bold;
-}
+} */
 
 .title {
-  display: flex;
-  margin: 30px;
-}
+  /* margin: 30px; */
 
-.center_all {
+  width: 100vw;
+  height: 20vh;
+
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+/* 추가 */
+.logo-container {
+  margin: 10px;
+  padding: 0;
 
-  margin-right: 760px;
+  width: 177.3px;
+  height: 36.6px;
 }
 
 .login_title {
@@ -232,8 +241,8 @@ body {
 
 /* 로고 추가 */
 div.margin {
-  height: 50px;
-  width: 20px;
+  height: 10px;
+  width: 75vw;
 }
 div.logo {
   width: 177.3px;
@@ -242,4 +251,18 @@ div.logo {
 img.logo {
   width: 177.3px;
   height: 36.6px;
+}
+div.width800 {
+  width: 800px;
+}
+
+.center_all {
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* margin-right: 600px; */
 }

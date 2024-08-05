@@ -8,22 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GreenShield</title>
 
-    <link
-      rel="stylesheet"
-      href="{% static 'css/reservationConfirmDone.css' %}"
-    />
+    <link rel="stylesheet" href="{% static 'css/reservationConfirmDone.css' %}" />
   </head>
   <body>
-    <section>
-      <h4><span>예약이 성공적으로 완료되었습니다!</span></h4>
-      <p class="done">
-        예약 날짜: {{ reservation.date }} {{ reservation.time }}
-        <br />
-        전문가: <span>{{ expert.name }}</span>
-      </p>
-      <a href="{% url 'green:mypage' %}" class="a-margin">
-        <button type="button" class="no">마이페이지로 이동</button>
-      </a>
-    </section>
+    <div class="container-center">
+      <section>
+        <h4><span>예약이 성공적으로 완료되었습니다!</span></h4>
+        <p class="done">
+          예약 날짜: {{ reservation.date }} {{ reservation.time }}
+          <br />
+          전문가: <span>{{ expert.name }}</span>
+        </p>
+        <a href="{% url 'green:mypage' %}" class="a-margin">
+          <button type="button" class="no">마이페이지로 이동</button>
+        </a>
+      </section>
+    </div>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

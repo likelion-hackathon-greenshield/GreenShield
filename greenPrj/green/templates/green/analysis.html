@@ -31,10 +31,7 @@
               <li class="list">
                 <!-- <input id="list1" class="list-checkbox" type="checkbox" /> -->
                 <label for="list1" class="list-checkbox">
-                  <img
-                    class="list-checkbox"
-                    src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}"
-                  />
+                  <img class="list-checkbox" src="{% static 'img/iconCheckbox_todoPlan_50x50.png' %}" />
                 </label>
                 <label for="list1" class="list-content"> {{ to_do }} </label>
               </li>
@@ -105,5 +102,6 @@
     </section>
 
     <script src="{% static 'js/analysis.js' %}"></script>
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>
