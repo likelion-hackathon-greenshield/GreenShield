@@ -18,30 +18,42 @@
                 <span class="author">{{ post.author.username }}</span>
                 <span class="post-time">{{ post.created_at }}</span>
               </div>
-            </div>
-          </div>
-          <p class="post-content">{{ post.content }}</p>
-          {% if post.image %}
-          <img src="{{ post.image.url }}" alt="{{ post.category }}" width="500" class="post-image" />
-          {% endif %} {% if post.video %}
-          <video width="500" controls>
-            <source src="{{ post.video.url }}" type="video/mp4" />
-          </video>
-          {% endif %} {% if user.is_authenticated %}
-          <div class="post-actions">
+            </div> {% if user.is_authenticated %}
             {% if user == post.author %}
-            <!-- <a href="{% url 'green:community_update' post.id %}">수정하기</a>
-            <a href="{% url 'green:community_delete' post.id %}">삭제하기</a> -->
-            {% endif %}
-            <div class="like-section">
-              <form action="{% url 'green:like_post' post.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="like-btn">{% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}</button>
-              </form>
-              <span id="like-count">{{ post.get_likes_count }}</span>
+            <div class="options-container">
+              <img src="{% static 'img/commu_more.png' %}" alt="더보기" class="more-options" onclick="showOptions(this)" />
+              <div class="options-box">
+                <div class="option" id="deleteOption" data-post-id="{{ post.id }}">
+                  <span class="delete-text">삭제</span>
+                </div>
+                <div class="option" id="editOption" data-post-id="{{ post.id }}">
+                  <span class="edit-text">수정</span>
+                </div>
+              </div>
             </div>
+            {% endif %}
           </div>
-          {% endif %}
+          <div class="post-content-container">
+            <p class="post-content">{{ post.content }}</p>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="{{ post.category }}" width="500" class="post-image" />
+            {% endif %} {% if post.video %}
+            <video width="500" controls>
+              <source src="{{ post.video.url }}" type="video/mp4" />
+            </video>
+            {% endif %}
+          </div>
+            <div class="post-actions">
+              <div class="like-section">
+                <form action="{% url 'green:like_post' post.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="like-btn">{% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}</button>
+                </form>
+                <span id="like-count">{{ post.get_likes_count }}</span>
+              </div>
+            </div>
+            {% endif %}
+            </div>
         </section>
 
         <div class="comment-section">
@@ -72,8 +84,65 @@
           {% endif %}
         </div>
       </div>
-    </div>
 
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <p>게시물을 삭제할까요?</p>
+        <p>삭제된 게시물은 복구할 수 없습니다.</p>
+        <form id="deleteForm" method="post" action="">
+          {% csrf_token %}
+          <button type="button" id="deleteConfirm" class="delete-confirm">삭제하기</button>
+          <button type="button" id="deleteCancel" class="delete-cancel" onclick="closeModal()">취소</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <script>
+      // DOMContentLoaded 이벤트 리스너
+      document.addEventListener("DOMContentLoaded", () => {
+        // 수정 및 삭제 옵션 클릭 시 처리
+        document.querySelectorAll(".option").forEach((option) => {
+          const postId = option.getAttribute("data-post-id"); // 게시물 ID 가져오기
+          if (option.id === "editOption") {
+            option.addEventListener("click", () => {
+              window.location.href = "{% url 'green:community_update' post_id='0' %}".replace("0", postId); // 수정 페이지로 이동
+            });
+          } else if (option.id === "deleteOption") {
+            option.addEventListener("click", () => {
+              confirmDelete(postId); // 모달 열기 및 게시물 ID 설정
+            });
+          }
+        });
+      });
+
+      // 모달을 표시하는 함수
+      function confirmDelete(postId) {
+        document.getElementById("deleteModal").style.display = "block";
+        document.getElementById("deleteForm").action = "{% url 'green:community_delete' '0' %}".replace("0", postId); // 삭제 URL 설정
+      }
+
+      // 모달을 닫는 함수
+      function closeModal() {
+        document.getElementById("deleteModal").style.display = "none";
+      }
+
+      // 모달에서 삭제 확인 버튼 클릭 시 처리할 함수
+      function deletePost() {
+        document.getElementById("deleteForm").submit(); // 폼 제출
+        closeModal(); // 모달을 닫습니다.
+      }
+
+      // 모달 관련 이벤트 리스너
+      document.getElementById("deleteConfirm").addEventListener("click", deletePost);
+      document.getElementById("deleteCancel").addEventListener("click", closeModal);
+
+      // 옵션 박스 표시/숨기기
+      function showOptions(element) {
+        const optionsBox = element.nextElementSibling;
+        optionsBox.style.display = optionsBox.style.display === "block" ? "none" : "block";
+      }
+    </script>
     <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>
