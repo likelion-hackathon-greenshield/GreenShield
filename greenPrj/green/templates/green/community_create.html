@@ -9,60 +9,64 @@
     <link rel="stylesheet" href="{% static 'css/community_create.css' %}" />
   </head>
 
-  <body>
-    <div class="write-container">
-      <h1 class="page-name">게시물 작성</h1>
-      <form method="post" action="{% url 'green:community_create' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        <!-- 카테고리 선택 박스 -->
-        <div class="form-group">
+  <html>
+    <body>
+      <div class="write-container">
+        <h1 class="page-name">게시물 작성</h1>
+        <form method="post" action="{% url 'green:community_create' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- 카테고리 선택 박스 -->
+          <div class="form-group">
             <label for="{{ form.category.id_for_label }}">카테고리</label>
             {{ form.category }}
-        </div>
-    
-        <!-- 내용 입력 박스 -->
-        <div class="form-content">{{ form.content }}</div>
-    
-        <!-- 버튼들 -->
-        <div class="button-container">
-          <div class="insert-container">
+          </div>
+
+          <!-- 내용 입력 박스 -->
+          <div class="form-content">{{ form.content }}</div>
+
+          <!-- 버튼들 -->
+          <div class="button-container">
+            <div class="insert-container">
               <label id="image-label" for="{{ form.image.id_for_label }}" class="form-control-file">사진 업로드</label>
               {{ form.image }}
               <label id="video-label" for="{{ form.video.id_for_label }}" class="form-control-file">영상 업로드</label>
               {{ form.video }}
+            </div>
+            <button type="submit" class="register-btn">등록</button>
           </div>
-          <button type="submit" class="register-btn">등록</button>
+        </form>
       </div>
-    </form>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
           // 이미지 업로드 라벨과 파일 입력 요소
-          const imageLabel = document.getElementById('image-label');
+          const imageLabel = document.getElementById("image-label");
           const imageInput = document.querySelector('input[type="file"][name="image"]');
-          
+
           // 비디오 업로드 라벨과 파일 입력 요소
-          const videoLabel = document.getElementById('video-label');
+          const videoLabel = document.getElementById("video-label");
           const videoInput = document.querySelector('input[type="file"][name="video"]');
-          
+
           // 이미지 파일 선택 시 라벨 업데이트
-          imageInput.addEventListener('change', function() {
-              if (this.files.length > 0) {
-                  imageLabel.textContent = this.files[0].name;
-              } else {
-                  imageLabel.textContent = '사진 업로드';
-              }
+          imageInput.addEventListener("change", function () {
+            if (this.files.length > 0) {
+              imageLabel.textContent = this.files[0].name;
+            } else {
+              imageLabel.textContent = "사진 업로드";
+            }
           });
-          
+
           // 비디오 파일 선택 시 라벨 업데이트
-          videoInput.addEventListener('change', function() {
-              if (this.files.length > 0) {
-                  videoLabel.textContent = this.files[0].name;
-              } else {
-                  videoLabel.textContent = '영상 업로드';
-              }
+          videoInput.addEventListener("change", function () {
+            if (this.files.length > 0) {
+              videoLabel.textContent = this.files[0].name;
+            } else {
+              videoLabel.textContent = "영상 업로드";
+            }
           });
-      });
-    </script>
-  </body> 
+        });
+      </script>
+      <script src="{% static './js/setZoom.js' %}"></script>
+    </body>
+  </html>
 </html>

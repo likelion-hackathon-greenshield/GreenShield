@@ -8,26 +8,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GreenShield</title>
 
-    <link
-      rel="stylesheet"
-      href="{% static 'css/reservationConfirmDone.css' %}"
-    />
+    <link rel="stylesheet" href="{% static 'css/reservationConfirmDone.css' %}" />
   </head>
   <body>
-    <section>
-      <h4><span>전문가 상담</span> 예약하기</h4>
-      <p class="confirm">
-        예약 확인 버튼을 누르는 순간 즉시 예약이 진행됩니다.
-      </p>
-      <form method="post" action="{% url 'green:reserve_complete' expert.id %}">
-        {% csrf_token %}
-        <div class="container">
-          <a href="{% url 'green:expert' %}" class="a-margin width-118">
-            <button type="button" class="no">취소</button>
-          </a>
-          <button type="submit" class="yes">예약 확인</button>
-        </div>
-      </form>
-    </section>
+    <div class="container-center">
+      <section>
+        <h4><span>전문가 상담</span> 예약하기</h4>
+        <p class="confirm">예약 확인 버튼을 누르는 순간 즉시 예약이 진행됩니다.</p>
+        <form method="post" action="{% url 'green:reserve_complete' expert.id %}">
+          {% csrf_token %}
+          <div class="container">
+            <a href="{% url 'green:expert' %}" class="a-margin width-118">
+              <button type="button" class="no">취소</button>
+            </a>
+            <button type="submit" class="yes">예약 확인</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

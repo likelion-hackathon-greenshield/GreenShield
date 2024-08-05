@@ -24,16 +24,15 @@
     <!-- 네비게이션 바 -->
     <nav class="top-bar">
       <div class="container">
-        <div class="logo">
-          <img
-            src="{% static 'img/logo_header.png' %}"
-            alt="GreenShield"
-            class="logo"
-          />
-          <!-- <h1>
-            <a href="{% url 'green:main' %}"> Green Shield </a>
-          </h1> -->
-        </div>
+        <a href="{% url 'green:main' %}">
+          <div class="logo">
+            <img
+              src="{% static 'img/logo_header.png' %}"
+              alt="GreenShield"
+              class="logo"
+            />
+          </div>
+        </a>
         <div class="nav-list">
           <!-- selected js 추가 필요 -->
           <a href="{% url 'green:test' %}" class="selected"

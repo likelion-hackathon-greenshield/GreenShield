@@ -16,16 +16,20 @@
 body {
   background-color: #f3faed;
   transform: scale(1.5); /* 콘텐츠를 1.35배로 확대 */
-  transform-origin: top left; /* 좌측 상단에서 확대 */
+  /* transform-origin: top left; 좌측 상단에서 확대 */
+  transform-origin: top center; /* 좌측 상단에서 확대 */
   /* 확대 시 스크롤바가 생기지 않도록 추가 스타일 */
   overflow-x: hidden;
-  width: 100vw; /* 100% 뷰포트 너비 */
-  height: 100vh; /* 100% 뷰포트 높이 */
+  /* width: 100vw; 100% 뷰포트 너비 */
+  /* height: 100vh; 100% 뷰포트 높이 */
+  display: flex;
+  justify-content: center;
 }
 
 .body_all {
-  margin-top: 50px;
-  margin-right: 750px;
+  /* margin-top: 50px;
+  margin-right: 750px; */
+  margin: 120px 0;
 }
 
 .signup_top {
@@ -519,4 +523,19 @@ body {
 
 .bottom_right_box_text a:active {
   color: black;
+}
+
+/* 추가 24.08.05 */
+.center_all {
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* margin-right: 600px; */
+}
+div.width {
+  width: 650px;
 }

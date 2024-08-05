@@ -22,12 +22,7 @@
           </div>
           <p class="post-content">{{ post.content }}</p>
           {% if post.image %}
-          <img
-            src="{{ post.image.url }}"
-            alt="{{ post.category }}"
-            width="500"
-            class="post-image"
-          />
+          <img src="{{ post.image.url }}" alt="{{ post.category }}" width="500" class="post-image" />
           {% endif %} {% if post.video %}
           <video width="500" controls>
             <source src="{{ post.video.url }}" type="video/mp4" />
@@ -41,9 +36,7 @@
             <div class="like-section">
               <form action="{% url 'green:like_post' post.id %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="like-btn">
-                  {% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}
-                </button>
+                <button type="submit" class="like-btn">{% if user in post.likes.all %}좋아요 취소{% else %} 좋아요 {% endif %}</button>
               </form>
               <span id="like-count">{{ post.get_likes_count }}</span>
             </div>
@@ -80,5 +73,7 @@
         </div>
       </div>
     </div>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

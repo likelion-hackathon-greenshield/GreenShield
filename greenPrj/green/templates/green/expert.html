@@ -18,11 +18,7 @@
         {% for expert in experts %}
         <li class="expert-list">
           <div class="img-back_reservation_expert">
-            <img
-              src="{{ expert.photo.url }}"
-              alt="{{ expert.name }}"
-              class="img-back_reservation_expert"
-            />
+            <img src="{{ expert.photo.url }}" alt="{{ expert.name }}" class="img-back_reservation_expert" />
           </div>
           <div class="container">
             <div class="info-container">
@@ -38,5 +34,7 @@
         {% endfor %}
       </ol>
     </section>
+
+    <script src="{% static './js/setZoom.js' %}"></script>
   </body>
 </html>

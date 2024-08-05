@@ -1,3 +1,9 @@
+.container-center {
+  width: 133.3vw;
+  display: flex;
+  justify-content: center;
+}
+
 section {
   width: 100vw;
   height: 90vh;
