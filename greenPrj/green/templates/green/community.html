@@ -55,6 +55,11 @@
             {% if post.image %}
             <img src="{{ post.image.url }}" alt="게시물 이미지" class="post-image" />
             {% endif %}
+            {% if post.video %}
+            <video width="13500" controls>
+            <source src="{{ post.video.url }}" alt="게시글 비디오" type="video/mp4" />
+            </video>
+            {% endif %}
           </a>
         </div>
         {% endif %} {% endfor %} {% else %}
