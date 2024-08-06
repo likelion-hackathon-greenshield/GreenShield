@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+Forfrom django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Category, Product, Post, Comment, Expert, Reservation, UserProfile, Payment, Question, Answer, CheckList
@@ -15,7 +15,7 @@ def main_view(request):
 
 def community(request):
     category = request.GET.get('category', 'health')
-    posts = Post.objects.filter(category=category)
+    posts = Post.objects.filter(category=category).order_by('-created_at')
     return render(request, 'green/community.html', {'posts': posts, 'selected_category' : category})
 
 def mypage(request):
